@@ -27,7 +27,7 @@
 	We have a rough measurement of the robot size and movements, and receive motor speed as "percentage" between -1 and 1.
 </p>
 
-<h2>Simulating movement</h2>
+<h2>Simulating the movement</h2>
 
 <h3>The simple and naive approach</h3>
 
@@ -60,7 +60,7 @@
 
 <app-image-content-layout
 		imageSrc="/blog/r2d2/two-wheel-movement/geogebra-angle-calc.png"
-		imageAlt="drawing of a angle calculation"
+		imageAlt="angle calculation"
 		ratio="2img-1text"
 		imagePosition="right"
 		imageHeight="auto">
@@ -74,7 +74,74 @@
 	</p>
 </app-image-content-layout>
 
-Solving will give us this formula
-<app-math-content [content]="formula_angle"></app-math-content>
+<p>
+	Ok so now lets look at what we want and what we've got. First of course what we know and can use for the calculation.
+</p>
+<app-image-wrapper alt="Drawing of how we calculate the angle" src="/blog/r2d2/two-wheel-movement/angle-calc.svg" width="100%" height="auto"></app-image-wrapper>
+<p>
+	The following are three statements that are true and we can use them to calculate the angle, since we got three unknows and three equations.
+</p>
+<app-math-content [content]="'We are looking for ' + `$r_r$` + ', ' + `$r_l$` + ' and ' + `$\\alpha$` + '.'"></app-math-content>
 
-<app-image-wrapper alt="drawing of the three movement types" src="/blog/r2d2/two-wheel-movement/simple.svg" width="100%" height="auto"></app-image-wrapper>
+<app-math-content [content]="formula_angle_known"></app-math-content>
+<p>
+	after solving for the angle we get a a result for the angle in radians, and the second one for the angle in degrees.
+	The one with degrees is the one we will use in Unity, as it is the standard there.
+</p>
+
+<app-math-content [content]="formula_angle_result"></app-math-content>
+<p>
+	This solution will actually tell us the turning point for free, as this can be calculated using a normalized vector from the center of the robot to one wheel and the turn radius of the wheel.<br>
+	<br>
+	That's everything we need.
+	We just need to make the vector from the center to the wheel the right length, and add it to a rotated version if itself, and we got a new position.
+	Rotate the robot by the angle we calculated, and we are done.
+</p>
+
+<p>
+	Please keep in mind, this is a simplified version of whats actually happening.
+	Including but not limited to:<br>
+	We need the center between the wheels as a center point, and not the robots center.
+	These vectors have to be calculated on every update, as the robot can move and turn.<br>
+	We cant take the radius of the wheels as is, we need the radius at the center point, so the average of the wheel turning radius.
+</p>
+
+<h4>Driving Straight</h4>
+
+<p>
+	Now we have a correct and advanced solution. Every movement with any wheel speeds can be calculated. Except for one common edge case.<br>
+	Bot wheels turning at the same speed, aka. driving straight.<br>
+	When we use the formula the angle will be zero and the radius will be infinite. Not very helpful information.
+</p>
+
+<p>
+	To solve this we have implemented an alternate way of calculating the turning point.
+</p>
+
+<app-image-content-layout
+		imageSrc="/blog/r2d2/two-wheel-movement/alternate-turning-point.svg"
+		imageAlt="drawing of the alternate turning point calculation"
+		ratio="2img-1text"
+		imagePosition="left"
+		imageHeight="auto">
+	<p>
+		By just pretending the wheels drive straight and individually we can draw two lines between the wheels, one in the new and on in the old position.<br>
+		The intersection of these two lines is the new turning point.
+		Additionally we can easily check if the robot is driving straight, as the lines must be parallel for this.
+	</p>
+</app-image-content-layout>
+
+<h4>A whole dimension of new problems</h4>
+
+<p>
+	Looking good so far, right? Well, for sanity reasons our thoughts and plans made in 2D, as it will drive and not fly.
+	Sadly in reality the robot absolutely can <s>fly</s> fall over. Or in less brutal cases, tilt.<br>
+	We have to account for this, as the robot should not drive into the ground when presented with a slope.
+</p>
+
+<p>
+	First things first, we need some directions we can trust.
+	Therefore we created an up vector, bound to the robot. Anything we rotate must now rotate around the up vector.
+</p>
+
+
