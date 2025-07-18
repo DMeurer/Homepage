@@ -1,0 +1,80 @@
+<h1 class="page-header">Simulating movement with two wheels</h1>
+
+<h3>Background information</h3>
+<p>
+	In the fourth semester of studying computer science, we had our first project with a team of four developers.<br>
+	The goal was to create a digital twin of a R2D2 Robot built by other students previously.
+	The main objective was to have programs run on both the real robot and the digital twin.
+	How we achieve this was left for us to figure out.<br>
+	We opted for a common communication system where you can later switch connections or possibly even connect to both at once.
+	As a simulation environment we chose the Unity game engine, as it is the most flexible regarding future sensor simulation.
+	It will make everything a bit more complex compared to a available solution, but dependent on a vendors set of sensors, as we don't know what sensors will be used in the future.
+</p>
+<h2>What is available?</h2>
+<p>
+	When simulating a robot, it's best to know its size, range of motion, movement speed, etc.
+	This information should be available in the CAD files but there simply were none.
+	Very surprising actually, as the Robot is fully 3D printed.<br>
+	Anyways we ended up measuring everything by hand, with an expectable tolerance.
+</p>
+<p>
+	The next important information is what information we receive.
+	We chose to send the motor speed as a float between -1 and 1, and only send changes in speed.<br>
+	At this point you can probably spot our future problems with detecting a connection loss.
+</p>
+<p>
+	Tl;Dr: <br>
+	We have a rough measurement of the robot size and movements, and receive motor speed as "percentage" between -1 and 1.
+</p>
+
+<h2>Simulating movement</h2>
+
+<h3>The simple and naive approach</h3>
+
+<p>
+	The first draft was a oversimplification on what movements types we might have.
+</p>
+
+<app-image-wrapper alt="drawing of the three movement types" src="/blog/r2d2/two-wheel-movement/simple.svg" width="100%" height="auto"></app-image-wrapper>
+<p>
+	First we got straight, so both wheels have the same speed. Fairly simple.
+	Just calculate the distance one of the wheels should have travelled, and multiplying it with a normalized forward vector.
+</p>
+<p>
+	Second is spinning, so the wheels are rotating in opposite directions but at the same speed. Also relatively simple.
+	Using the one wheels distance and the distance between the center point and the wheels we can calculate the angle of the circle segment.
+	Once we have these its a matter of calling a rotate method in Unity.
+</p>
+<p>
+	The third is turning, when only one wheel is turning.
+	Taking the circle segment calculation from the spin movement, but using the distance of the wheels as radius, we know where to put the robot and how to much to rotate it.<br>
+	But to actually move it, we need the new position as vector.
+</p>
+
+<p>
+	Now this works, but using this, we are limited to exactly these movement types.
+	We are receiving the motor speeds as float, landing at one of these is fairly rare.
+</p>
+
+<h3>The complex but universal solution</h3>
+
+<app-image-content-layout
+		imageSrc="/blog/r2d2/two-wheel-movement/geogebra-angle-calc.png"
+		imageAlt="drawing of a angle calculation"
+		ratio="2img-1text"
+		imagePosition="right"
+		imageHeight="auto">
+	
+	<p>
+		As this simplification wont cut it, we need something new.
+		Digging deeper into the math behind circle segments, we notice we can calculate the angle just from two path lengths.
+	</p>
+	<p>
+		We can use the same formulas as above, we just need to solve for something else.
+	</p>
+</app-image-content-layout>
+
+Solving will give us this formula
+<app-math-content [content]="formula_angle"></app-math-content>
+
+<app-image-wrapper alt="drawing of the three movement types" src="/blog/r2d2/two-wheel-movement/simple.svg" width="100%" height="auto"></app-image-wrapper>

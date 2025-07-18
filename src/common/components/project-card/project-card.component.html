@@ -1,5 +1,5 @@
 <mat-card class="project-card" routerLink="{{project.tag}}">
-	<img alt="" src="{{project.image}}">
+	<img *ngIf="project.image != '' || project.image == undefined" alt="" src="{{project.image}}">
 	<mat-card-header>
 		<mat-card-title>{{ project.name }}</mat-card-title>
 	</mat-card-header>

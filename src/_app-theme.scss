@@ -3,6 +3,7 @@
 @use "./common/components/navbar/navbar-theme";
 @use "./common/components/logo/app-logo";
 @use "./common/components/project-card/project-card-theme";
+@use "./common/components/image-wrapper/image-wrapper-theme";
 
 // Styles for the docs app that are based on the current theme.
 @mixin theme($theme) {
@@ -19,7 +20,11 @@
   }
 
   h1.page-header {
-    margin-top: 50px;
+    margin-top: 50px !important;
+  }
+  
+  h1, h2, h3 {
+    margin-top: 30px !important;
   }
 
   .iframe-container {
