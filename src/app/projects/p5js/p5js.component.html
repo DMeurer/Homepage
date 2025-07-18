@@ -1,8 +1,10 @@
 <h1 class="page-header">My P5js Projects</h1>
 
 <p style="margin-bottom: 50px">These Projects are all done using the p5js library.<br>
-	All them are pretty small and I they ore not in development. But i think its a nice little "how I started".</p>
+All them are pretty small and I they ore not in development. But i think its a nice little "how I started".</p>
 
 <div class="card-container">
-	<app-project-card *ngFor="let this_project of PROJECTS_P5JS" [project]="this_project"></app-project-card>
+  @for (this_project of PROJECTS_P5JS; track this_project) {
+    <app-project-card [project]="this_project"></app-project-card>
+  }
 </div>
