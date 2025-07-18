@@ -1,11 +1,4 @@
 <nav aria-label="Top Toolbar" class="docs-navbar-header">
-	@if (skipLinkHidden) {
-		<div class="skip-link-wrapper" [class.cdk-visually-hidden]="skipLinkHidden">
-			<a mat-raised-button [href]="skipLinkHref" (focus)="skipLinkHidden = false" (blur)="skipLinkHidden = true" color="accent">
-				Skip to main content
-			</a>
-		</div>
-	}
 	<a aria-label="Angular Material" mat-button routerLink="/">
 		<app-logo matButtonIcon/>
 		DMeurer

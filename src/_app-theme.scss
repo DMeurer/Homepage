@@ -15,6 +15,14 @@
     line-height: 1.5;
     margin: 0;
     padding: 0;
+    padding-top: 64px; // Add padding to account for fixed navbar
+  }
+
+  // Responsive padding for mobile devices
+  @media (max-width: 720px) {
+    body {
+      padding-top: 112px; // More padding for mobile with two-row navbar
+    }
   }
   
   .docs-app-background {

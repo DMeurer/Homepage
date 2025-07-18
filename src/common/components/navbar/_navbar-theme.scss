@@ -3,10 +3,16 @@
 
 @mixin theme($theme) {
   nav-bar {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1000000;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     color: mat.get-theme-color($theme, primary);
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 
     .docs-navbar, .docs-navbar-header {
       background: mat.get-theme-color($theme, primary-container);

@@ -3,10 +3,15 @@
   flex-wrap: wrap;
   align-items: center;
   padding: 8px 16px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 
   > .mat-mdc-button {
     &:last-child {
       margin-left: auto;
+      margin-right: 0;
     }
   }
 }
@@ -27,6 +32,7 @@ app-logo {
 
 .flex-spacer {
   flex-grow: 1;
+  min-width: 0;
 }
 
 
@@ -38,6 +44,9 @@ app-logo {
 
 .docs-navbar {
   display: none;
+  position: relative;
+  width: 100%;
+  padding: 8px 16px;
 }
 
 
@@ -46,13 +55,6 @@ app-logo {
 }
 
 
-.skip-link-wrapper {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 5px;
-}
 
 
 // Rules for when the device is detected to be a small screen.
@@ -72,6 +74,21 @@ app-logo {
 
   .github-logo {
     margin: 0;
+  }
+}
+
+// Prevent overflow on medium screens
+@media (max-width: 1000px) {
+  .docs-navbar-header {
+    padding: 8px 12px;
+    
+    > .mat-mdc-button {
+      padding: 0 8px;
+    }
+  }
+  
+  .flex-spacer {
+    min-width: 16px;
   }
 }
 
