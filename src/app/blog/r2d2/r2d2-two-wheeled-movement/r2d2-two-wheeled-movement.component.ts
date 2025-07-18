@@ -1,4 +1,3 @@
-import {NgOptimizedImage} from "@angular/common";
 import { Component } from '@angular/core';
 import {ImageContentLayoutComponent} from "../../../../common/components/image-content-layout/image-content-layout";
 import {ImageWrapperComponent} from "../../../../common/components/image-wrapper/image-wrapper.component";
@@ -7,7 +6,6 @@ import {MathContentComponent} from "../../../../common/components/math-content/m
 @Component({
     selector: 'app-r2d2-two-wheeled-movement',
     imports: [
-        NgOptimizedImage,
         ImageWrapperComponent,
         ImageContentLayoutComponent,
         MathContentComponent,

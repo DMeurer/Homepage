@@ -1,4 +1,3 @@
-import { NgOptimizedImage } from "@angular/common";
 import {Component, Input} from "@angular/core";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatChip, MatChipSet} from "@angular/material/chips";
@@ -14,8 +13,7 @@ import {Project} from "../../data/projects/datatypes";
     MatCardHeader,
     MatCardContent,
     MatCardTitle,
-    RouterLink,
-    NgOptimizedImage
+    RouterLink
 ],
     inputs: [
         "project",
