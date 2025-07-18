@@ -1,4 +1,4 @@
-import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import { NgOptimizedImage } from "@angular/common";
 import {Component, Input} from "@angular/core";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatChip, MatChipSet} from "@angular/material/chips";
@@ -8,17 +8,15 @@ import {Project} from "../../data/projects/datatypes";
 @Component({
     selector: "app-project-card",
     imports: [
-        MatChipSet,
-        MatChip,
-        NgForOf,
-        MatCard,
-        MatCardHeader,
-        MatCardContent,
-        MatCardTitle,
-        RouterLink,
-        NgOptimizedImage,
-        NgIf,
-    ],
+    MatChipSet,
+    MatChip,
+    MatCard,
+    MatCardHeader,
+    MatCardContent,
+    MatCardTitle,
+    RouterLink,
+    NgOptimizedImage
+],
     inputs: [
         "project",
     ],
