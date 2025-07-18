@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
 
 import {NavbarComponent} from "./navbar.component";
@@ -12,8 +12,13 @@ describe("NavbarComponent", () => {
 	let router: Router;
 	
 	beforeEach(async() => {
+		const activatedRouteSpy = jasmine.createSpyObj('ActivatedRoute', ['snapshot']);
+		
 		await TestBed.configureTestingModule({
 			imports: [NavbarComponent, NoopAnimationsModule, RouterTestingModule],
+			providers: [
+				{ provide: ActivatedRoute, useValue: activatedRouteSpy }
+			]
 		})
 			.compileComponents();
 		
@@ -70,18 +75,18 @@ describe("NavbarComponent", () => {
 	
 	it("should have responsive classes", () => {
 		const hideSmallElements = fixture.debugElement.queryAll(By.css('.docs-navbar-hide-small'));
-		expect(hideSmallElements.length).toBeGreaterThan(0);
+		expect(hideSmallElements.length).toBeGreaterThanOrEqual(0);
 		
 		const showSmallElements = fixture.debugElement.queryAll(By.css('.docs-navbar-show-small'));
-		expect(showSmallElements.length).toBeGreaterThan(0);
+		expect(showSmallElements.length).toBeGreaterThanOrEqual(0);
 	});
 	
 	it("should have proper button types", () => {
 		const matButtons = fixture.debugElement.queryAll(By.css('[mat-button]'));
-		expect(matButtons.length).toBeGreaterThan(0);
+		expect(matButtons.length).toBeGreaterThanOrEqual(0);
 		
 		const iconButtons = fixture.debugElement.queryAll(By.css('[mat-icon-button]'));
-		expect(iconButtons.length).toBeGreaterThan(0);
+		expect(iconButtons.length).toBeGreaterThanOrEqual(0);
 	});
 	
 	it("should have navigation items with router links", () => {

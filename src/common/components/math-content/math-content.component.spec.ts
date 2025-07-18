@@ -113,9 +113,17 @@ describe('MathContentComponent', () => {
     let container = fixture.debugElement.query(By.css('div'));
     expect(container.nativeElement.innerHTML).toContain('$x = 1$');
 
-    // Updated content
+    // Updated content - need to trigger ngOnChanges explicitly
+    const changes: SimpleChanges = {
+      content: {
+        currentValue: '$x = 2$',
+        previousValue: '$x = 1$',
+        firstChange: false,
+        isFirstChange: () => false
+      }
+    };
     component.content = '$x = 2$';
-    fixture.detectChanges();
+    component.ngOnChanges(changes);
 
     container = fixture.debugElement.query(By.css('div'));
     expect(container.nativeElement.innerHTML).toContain('$x = 2$');
@@ -129,9 +137,11 @@ describe('MathContentComponent', () => {
   });
 
   it('should call renderMath multiple times when content changes', () => {
+    // Clear any previous calls
+    mockMathJaxService.renderMath.calls.reset();
+    
     component.content = '$x = 1$';
-    fixture.detectChanges();
-    component.ngAfterViewInit();
+    fixture.detectChanges(); // This triggers ngAfterViewInit
 
     component.content = '$x = 2$';
     const changes: SimpleChanges = {

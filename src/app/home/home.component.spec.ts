@@ -1,7 +1,8 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {By} from "@angular/platform-browser";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {RouterTestingModule} from "@angular/router/testing";
 
 import {HomeComponent} from "./home.component";
 
@@ -12,11 +13,13 @@ describe("HomeComponent", () => {
 	
 	beforeEach(async() => {
 		const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+		const activatedRouteSpy = jasmine.createSpyObj('ActivatedRoute', ['snapshot']);
 		
 		await TestBed.configureTestingModule({
-			imports: [HomeComponent, NoopAnimationsModule],
+			imports: [HomeComponent, NoopAnimationsModule, RouterTestingModule],
 			providers: [
-				{ provide: Router, useValue: routerSpy }
+				{ provide: Router, useValue: routerSpy },
+				{ provide: ActivatedRoute, useValue: activatedRouteSpy }
 			]
 		})
 			.compileComponents();
@@ -61,14 +64,14 @@ describe("HomeComponent", () => {
 		const projectsButton = fixture.debugElement.query(By.css('.projects-card button'));
 		expect(projectsButton).toBeTruthy();
 		expect(projectsButton.nativeElement.textContent.trim()).toBe("View Projects");
-		expect(projectsButton.attributes['ng-reflect-router-link']).toBe('/projects');
+		expect(projectsButton.attributes['routerLink']).toBe('/projects');
 	});
 	
 	it("should have Read Blog button with correct routerLink", () => {
 		const blogButton = fixture.debugElement.query(By.css('.blog-card button'));
 		expect(blogButton).toBeTruthy();
 		expect(blogButton.nativeElement.textContent.trim()).toBe("Read Blog");
-		expect(blogButton.attributes['ng-reflect-router-link']).toBe('/blog');
+		expect(blogButton.attributes['routerLink']).toBe('/blog');
 	});
 	
 	
