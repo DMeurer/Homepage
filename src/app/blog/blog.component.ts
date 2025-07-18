@@ -4,14 +4,13 @@ import {ProjectCardComponent} from "../../common/components/project-card/project
 import {BLOG_POSTS} from "../../common/data/blogPosts/BLOG_POSTS";
 
 @Component({
-  selector: 'app-blog',
-  standalone: true,
-	imports: [
-		NgForOf,
-		ProjectCardComponent,
-	],
-  templateUrl: './blog.component.html',
-  styleUrl: './blog.component.scss'
+    selector: 'app-blog',
+    imports: [
+        NgForOf,
+        ProjectCardComponent,
+    ],
+    templateUrl: './blog.component.html',
+    styleUrl: './blog.component.scss'
 })
 export class BlogComponent {
 	

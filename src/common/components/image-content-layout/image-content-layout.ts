@@ -7,10 +7,9 @@ export type LayoutRatio = '2img-1text' | '50-50' | '1img-2text';
 export type ImagePosition = 'left' | 'right';
 
 @Component({
-	selector: 'app-image-content-layout',
-	standalone: true,
-	imports: [CommonModule, ImageWrapperComponent],
-	template: `
+    selector: 'app-image-content-layout',
+    imports: [CommonModule, ImageWrapperComponent],
+    template: `
 		<div class="layout-container" [ngClass]="containerClasses">
 			<!-- Single layout that works for both desktop and mobile -->
 			<div class="image-section" [ngClass]="imageSectionClasses">
@@ -32,7 +31,7 @@ export type ImagePosition = 'left' | 'right';
 			</div>
 		</div>
 	`,
-	styles: [`
+    styles: [`
       .layout-container {
         display: flex;
         width: 100%;

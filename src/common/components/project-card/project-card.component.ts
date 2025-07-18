@@ -6,25 +6,24 @@ import {RouterLink} from "@angular/router";
 import {Project} from "../../data/projects/datatypes";
 
 @Component({
-	selector: "app-project-card",
-	standalone: true,
-	imports: [
-		MatChipSet,
-		MatChip,
-		NgForOf,
-		MatCard,
-		MatCardHeader,
-		MatCardContent,
-		MatCardTitle,
-		RouterLink,
-		NgOptimizedImage,
-		NgIf,
-	],
-	inputs: [
-		"project",
-	],
-	templateUrl: "./project-card.component.html",
-	styleUrl: "./project-card.component.scss",
+    selector: "app-project-card",
+    imports: [
+        MatChipSet,
+        MatChip,
+        NgForOf,
+        MatCard,
+        MatCardHeader,
+        MatCardContent,
+        MatCardTitle,
+        RouterLink,
+        NgOptimizedImage,
+        NgIf,
+    ],
+    inputs: [
+        "project",
+    ],
+    templateUrl: "./project-card.component.html",
+    styleUrl: "./project-card.component.scss"
 })
 export class ProjectCardComponent {
 	

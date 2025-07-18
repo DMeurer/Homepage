@@ -5,17 +5,15 @@ import {ImageWrapperComponent} from "../../../../common/components/image-wrapper
 import {MathContentComponent} from "../../../../common/components/math-content/math-content.component";
 
 @Component({
-  selector: 'app-r2d2-two-wheeled-movement',
-  standalone: true,
-	imports: [
-		NgOptimizedImage,
-		ImageWrapperComponent,
-		ImageContentLayoutComponent,
-		MathContentComponent,
-	
-	],
-  templateUrl: './r2d2-two-wheeled-movement.component.html',
-  styleUrl: './r2d2-two-wheeled-movement.component.scss'
+    selector: 'app-r2d2-two-wheeled-movement',
+    imports: [
+        NgOptimizedImage,
+        ImageWrapperComponent,
+        ImageContentLayoutComponent,
+        MathContentComponent,
+    ],
+    templateUrl: './r2d2-two-wheeled-movement.component.html',
+    styleUrl: './r2d2-two-wheeled-movement.component.scss'
 })
 export class R2d2TwoWheeledMovementComponent {
 	formula_angle = `

@@ -4,14 +4,13 @@ import {ProjectCardComponent} from "../../common/components/project-card/project
 import {PROJECTS} from "../../common/data/projects/projects";
 
 @Component({
-	selector: "app-projects",
-	standalone: true,
-	imports: [
-		NgForOf,
-		ProjectCardComponent,
-	],
-	templateUrl: "./projects.component.html",
-	styleUrl: "./projects.component.scss",
+    selector: "app-projects",
+    imports: [
+        NgForOf,
+        ProjectCardComponent,
+    ],
+    templateUrl: "./projects.component.html",
+    styleUrl: "./projects.component.scss"
 })
 export class ProjectsComponent {
 	protected readonly PROJECTS = PROJECTS;
