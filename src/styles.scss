@@ -6,8 +6,13 @@ $theme: mat.define-theme((
         color: (
                 theme-type: dark,
                 primary: mat.$cyan-palette,
+        ),
+        typography: (
+                brand-family: 'Roboto, "Helvetica Neue", sans-serif',
+                plain-family: 'Roboto, "Helvetica Neue", sans-serif',
         )
 ));
+
 
 // Include material core styles.
 @include mat.core();
@@ -16,4 +21,24 @@ $theme: mat.define-theme((
 
 :root {
   @include mat.all-component-themes($theme);
+}
+
+.mat-typography {
+  @include mat.typography-hierarchy($theme);
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  
+  // Increase specific typography sizes
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+  h4 { font-size: 1.5rem; }
+  h5 { font-size: 1.25rem; }
+  h6 { font-size: 1.125rem; }
+  
+  p, div, span {
+    font-size: 16px;
+    line-height: 1.6;
+  }
 }

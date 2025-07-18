@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MathjaxService } from './mathjax.service';
+import { MathJaxService } from './mathjax.service';
 
-describe('MathjaxService', () => {
-  let service: MathjaxService;
+describe('MathJaxService', () => {
+  let service: MathJaxService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MathjaxService);
+    service = TestBed.inject(MathJaxService);
   });
 
   it('should be created', () => {
