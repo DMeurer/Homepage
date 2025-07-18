@@ -6,10 +6,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 
 @Component({
-	selector: 'app-image-wrapper',
-	standalone: true,
-	imports: [CommonModule, MatIconModule, MatButtonModule, MatDialogModule],
-	template: `
+    selector: 'app-image-wrapper',
+    imports: [CommonModule, MatIconModule, MatButtonModule, MatDialogModule],
+    template: `
     <div class="image-container" (click)="openFullscreen()"
 		 [style.width]="width"
 		 [style.height]="height"
@@ -28,7 +27,7 @@ import { CommonModule } from '@angular/common';
       </div>
     </div>
   `,
-	styles: [`
+    styles: [`
     .image-container {
       position: relative;
       display: inline-block;
@@ -95,10 +94,9 @@ export class ImageWrapperComponent {
 }
 
 @Component({
-	selector: 'app-fullscreen-image-dialog',
-	standalone: true,
-	imports: [CommonModule, MatIconModule, MatButtonModule, MatDialogModule],
-	template: `
+    selector: 'app-fullscreen-image-dialog',
+    imports: [CommonModule, MatIconModule, MatButtonModule, MatDialogModule],
+    template: `
     <div class="fullscreen-container">
       <button 
         mat-icon-button 
@@ -118,7 +116,7 @@ export class ImageWrapperComponent {
       </div>
     </div>
   `,
-	styles: [`
+    styles: [`
     .fullscreen-container {
       position: relative;
       width: 100vw;
