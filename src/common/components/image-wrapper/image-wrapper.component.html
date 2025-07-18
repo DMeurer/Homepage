@@ -1,0 +1,17 @@
+<div class="image-container" (click)="openFullscreen()"
+     [style.width]="width"
+     [style.height]="height"
+>
+  <img 
+    [src]="src" 
+    [alt]="alt" 
+    [class]="imageClass"
+    class="clickable-image"
+    [style.width]="width"
+    [style.height]="height"
+    [style.object-fit]="objectFit"
+  />
+  <div class="overlay">
+    <mat-icon class="expand-icon">fullscreen</mat-icon>
+  </div>
+</div>

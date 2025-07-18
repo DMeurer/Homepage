@@ -1,0 +1,18 @@
+<div class="fullscreen-container">
+  <button 
+    mat-icon-button 
+    class="close-button"
+    (click)="close()"
+    aria-label="Close fullscreen image"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+  
+  <div class="image-wrapper" (click)="close()">
+    <img 
+      [src]="data.src" 
+      [alt]="data.alt"
+      class="fullscreen-image"
+    />
+  </div>
+</div>

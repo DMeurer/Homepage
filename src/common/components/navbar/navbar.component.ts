@@ -23,8 +23,6 @@ const SECTIONS_KEYS = Object.keys(SECTIONS);
 })
 
 export class NavbarComponent implements OnDestroy {
-	skipLinkHref: string | null | undefined;
-	skipLinkHidden = true;
 	private subscriptions = new Subscription();
 	
 	get sections() {

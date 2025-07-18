@@ -1,0 +1,110 @@
+.layout-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 15px;
+  align-items: stretch;
+}
+
+/* Ratio classes */
+.layout-container.ratio-2img-1text .image-section { flex: 2; }
+.layout-container.ratio-2img-1text .content-section { flex: 1; }
+
+.layout-container.ratio-50-50 .image-section { flex: 1; }
+.layout-container.ratio-50-50 .content-section { flex: 1; }
+
+.layout-container.ratio-1img-2text .image-section { flex: 1; }
+.layout-container.ratio-1img-2text .content-section { flex: 2; }
+
+/* Image position */
+.layout-container.image-right {
+  flex-direction: row-reverse;
+}
+
+.layout-container.image-left {
+  flex-direction: row;
+}
+
+/* Sections */
+.image-section {
+  display: flex;
+  align-items: center;
+}
+
+.content-section {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.content-wrapper {
+  width: 100%;
+}
+
+.responsive-image {
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.responsive-image:hover {
+  transform: scale(1.02);
+}
+
+/* Content styling */
+.content-wrapper ::ng-deep h1,
+.content-wrapper ::ng-deep h2,
+.content-wrapper ::ng-deep h3,
+.content-wrapper ::ng-deep h4,
+.content-wrapper ::ng-deep h5,
+.content-wrapper ::ng-deep h6 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.content-wrapper ::ng-deep p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.content-wrapper ::ng-deep ul,
+.content-wrapper ::ng-deep ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+.content-wrapper ::ng-deep li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column !important;
+    gap: 20px;
+  }
+
+  .layout-container .image-section,
+  .layout-container .content-section {
+    flex: none !important;
+  }
+
+  .content-section {
+    padding: 0 16px;
+  }
+
+  .content-wrapper ::ng-deep h1,
+  .content-wrapper ::ng-deep h2,
+  .content-wrapper ::ng-deep h3 {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 0 12px;
+  }
+}
