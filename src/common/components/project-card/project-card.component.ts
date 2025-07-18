@@ -1,4 +1,4 @@
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {Component, Input} from "@angular/core";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatChip, MatChipSet} from "@angular/material/chips";
@@ -17,6 +17,8 @@ import {Project} from "../../data/projects/datatypes";
 		MatCardContent,
 		MatCardTitle,
 		RouterLink,
+		NgOptimizedImage,
+		NgIf,
 	],
 	inputs: [
 		"project",
@@ -29,4 +31,5 @@ export class ProjectCardComponent {
 	@Input!()
 	project!: Project;
 	
+	protected readonly NaN = NaN;
 }

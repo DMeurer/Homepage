@@ -4,7 +4,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 
 import {Subscription} from "rxjs";
-import {SECTIONS} from "../items/items";
+import {SECTIONS} from "../items/nav_items";
 import {AppLogo} from "../logo/app-logo.component";
 
 const SECTIONS_KEYS = Object.keys(SECTIONS);
