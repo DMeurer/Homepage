@@ -32,4 +32,10 @@ export class R2d2TwoWheeledMovementComponent {
 		$$
 	`;
 	
+	formula_closest_point = `
+	$$
+	\\vec F_g=\\frac{ \\vec b \\cdot \\vec n_2 - \\vec a \\cdot \\vec n_2 }{ \\vec v \\cdot \\vec n_2 } \\vec v + \\vec a \\quad \\text{ using: } \\quad  \\vec n_2 = \\vec w \\times (\\vec v \\times \\vec w)
+	$$
+	`;
+	
 }

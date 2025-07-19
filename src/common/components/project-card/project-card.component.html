@@ -1,16 +1,17 @@
 <mat-card class="project-card" routerLink="{{project.tag}}">
-  @if (project.image != '' || project.image == undefined) {
-    <img alt="" src="{{project.image}}">
-  }
-  <mat-card-header>
-    <mat-card-title>{{ project.name }}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>{{ project.description }}</p>
-    <mat-chip-set aria-label="Project Tags">
-      @for (this_chip of project.chips; track this_chip) {
-        <mat-chip disableRipple>{{ this_chip.name }}</mat-chip>
-      }
-    </mat-chip-set>
-  </mat-card-content>
+	@if (project.image != '' || project.image == undefined) {
+		<img alt="" src="{{project.image}}">
+	}
+	<mat-card-header>
+		<mat-card-title>{{ project.name }}</mat-card-title>
+	</mat-card-header>
+	<div [@If]="project.date" class="card-date">{{ dateString }}</div>
+	<mat-card-content>
+		<p>{{ project.description }}</p>
+		<mat-chip-set aria-label="Project Tags">
+			@for (this_chip of project.chips; track this_chip) {
+				<mat-chip disableRipple>{{ this_chip.name }}</mat-chip>
+			}
+		</mat-chip-set>
+	</mat-card-content>
 </mat-card>

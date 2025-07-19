@@ -12,9 +12,9 @@ import { MatButtonModule } from '@angular/material/button';
 export class FullscreenImageDialog {
 	constructor(
 		private dialogRef: MatDialogRef<FullscreenImageDialog>,
-		@Inject(MAT_DIALOG_DATA) public data: { src: string; alt: string }
+		@Inject(MAT_DIALOG_DATA) public data: { src: string; alt: string; backgroundColor?: string }
 	) {}
-	
+
 	close() {
 		this.dialogRef.close();
 	}

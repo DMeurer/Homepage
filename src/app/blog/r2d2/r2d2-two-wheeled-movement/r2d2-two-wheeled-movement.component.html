@@ -81,7 +81,7 @@
 <p>
 	The following are three statements that are true and we can use them to calculate the angle, since we got three unknows and three equations.
 </p>
-<app-math-content [content]="'We are looking for ' + `$r_r$` + ', ' + `$r_l$` + ' and ' + `$\\alpha$` + '.'"></app-math-content>
+<app-math-content [content]="'We are looking for ' + `$r_r$` + ', ' + `$r_l$` + ' and ' + `$\\alpha$` + '.'"></app-math-content><br>
 
 <app-math-content [content]="formula_angle_known"></app-math-content>
 <p>
@@ -141,7 +141,45 @@
 
 <p>
 	First things first, we need some directions we can trust.
-	Therefore we created an up vector, bound to the robot. Anything we rotate must now rotate around the up vector.
+	Therefore we created an up vector, bound to the robot. Anything we rotate must now rotate around the up vector.<br>
+	Adding the vectors will then look like this:
 </p>
 
+<app-image-wrapper alt="3D Admination using GeoGebra" src="/blog/r2d2/two-wheel-movement/3D-Sequence.gif" width="100%" height="auto"></app-image-wrapper>
 
+<p>
+	The yellow dotted line is the up vector, the black vectors are "center to turning point" and the rotated "center to turning point".<br>
+	(and sorry for the quality, GeoGebra is not the best for this, but this is what we used during development)
+</p>
+
+<p>
+	But apart from making every calculation a bit more complicated, this also introduces a new problem.<br>
+	Remember we use intersecting lines to calculate the turning point? Yeah we cant do that anymore.
+</p>
+
+<app-image-content-layout 
+		imageSrc="/blog/r2d2/two-wheel-movement/wikipedia-closest-points.svg"
+		imageAlt="3D closest point calculation"
+		ratio="2img-1text"
+		imageBackgroundColor="#f0f0f0"
+		imagePosition="right"
+		imageHeight="auto">
+	<p>
+		Because of float imprecision, the lines will likely never intersect. So we need to find the points on the lines that are closest to each other.
+		Thankfully, since this something you learn in school, there are plenty of resources online, including a whole dedicated Wikipedia article including ready to steal algorithms for this.
+	</p>
+	<app-math-content [content]="formula_closest_point"></app-math-content>
+</app-image-content-layout>
+
+<h2>Implementation</h2>
+
+<p>
+	I wont go into too much detail on this, as it was fairly straightforward to translate the math into code. (At least after you understand Unity's Quaternion system)<br>
+	So, have a look at the result:
+</p>
+
+<app-image-wrapper alt="3D Admination using GeoGebra" src="/blog/r2d2/two-wheel-movement/final-capture.gif" width="100%" height="auto"></app-image-wrapper>
+
+<div class="footer-section">
+	<p>Cheers!</p>
+</div>
