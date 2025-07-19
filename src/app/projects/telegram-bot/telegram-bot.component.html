@@ -43,6 +43,37 @@
 	This was kind of my main goal.<br>
 	A solution that "just works" and is free and easy to use. My choice was Bash (and cron).<br>
 	<br>
+	The following job is run every minute:
 </p>
 
-<pre><code [highlight]="`print('Hello World')`" language="JavaScript" lineNumbers></code></pre>
+<pre><code [highlight]="(codeUrlCronjob | codeFromUrl | async) || ''" [language]="'sh'" lineNumbers></code></pre>
+
+<p>
+	What this script mostly does, is making sure the deployment is not happening multiple times in parallel, as this can lead to weird states and issues.<br>
+	This is done via a lock file, which is created at the start of the script and deleted at the end.<br>
+	<br>
+	Then this script will run the update script:
+</p>
+
+<pre><code [highlight]="(codeUrlCheckUpdates | codeFromUrl | async) || ''" [language]="'sh'" lineNumbers></code></pre>
+
+<p>
+	(Sorry for the weird highlighting issues)<br>
+	This script will compare the latest commit on the main branch of the repository with the current commit of the deployment.<br>
+	If the commits are the same, there is nothing to do, if the remote one is different, it will pull the changes and run the deploy script.<br>
+	When there are local changes, it will stash them and pull the changes, then run the deploy script.<br>
+	For diverged branches, it will just print an error message and exit.<br>
+	<br>
+	Because I wanted to use Docker, the deploy script couldn't be simpler than this:
+</p>
+
+<pre><code [highlight]="(codeUrlDeploy | codeFromUrl | async) || ''" [language]="'sh'" lineNumbers></code></pre>
+
+<p>
+	Just building the new image and starting a container with the new image. When the new container is running, the old one will be stopped and removed.<br>
+	Also, the old image will be removed to save space.
+</p>
+
+<div class="footer-section">
+	<p>Cheers!</p>
+</div>
