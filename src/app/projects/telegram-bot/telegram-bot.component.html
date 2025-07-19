@@ -1,1 +1,48 @@
-<p>telegram-bot works!</p>
+<h1>Telegram bot</h1>
+<p>
+	This is a learning project and is a combination of multiple things I wanted to try
+</p>
+<ul>
+	<li>Writing a Chatbot</li>
+	<li>Containerizing a something (this was pre-university, so I din't know anything about it.</li>
+	<li>Writing my own DevOps pipeline</li>
+</ul>
+
+<h2>Writing a Chatbot</h2>
+
+<p>
+	The first thing to consider is what platform to use.
+	My first Ideas were Discord and WhatsApp, but Discord wont send push notifications on time, and for WhatsApp,
+	it's super hard / costly to get a bot account since this is made for businesses.<br>
+	Some research later I had a Telegram account and was chatting BotFather.
+</p>
+<p>
+	A quick look at what languages have libraries for the Telegram Bot API and I chose my weapon for this project: Go.
+</p>
+
+<p>
+	The bot itself is rather simple. It can echo, and print help messages like normal.
+	Additionally it can print some debug information like the current time and the uptime of the bot and the server.<br>
+	Some time later I added some more functionality some using external APIs or web scraping.<br>
+	The first was a ping. This was a simple method of checking if a device in my home network is on, as long as I have the IP address.<br>
+	The second was a IP Lookup. Also very simple, using a free API to get the location of an IP address.<br>
+	The third can send you this week's canteen menu from my university, which is a simple web scraping task.
+	You can choose if you want the full week or a single day, or get the current day by default.<br>
+</p>
+
+<h2>Containerizing a something</h2>
+<p>
+	Not having worked with containerization before, this was quite a challenge to figure out.<br>
+	Starting with the GO example and some documentation, I got it running eventually.<br>
+	Using a docker compose file, I've got a working zero-downtime deployment.
+</p>
+
+<h2>Writing my own DevOps pipeline</h2>
+
+<p>
+	This was kind of my main goal.<br>
+	A solution that "just works" and is free and easy to use. My choice was Bash (and cron).<br>
+	<br>
+</p>
+
+<pre><code [highlight]="`print('Hello World')`" language="JavaScript" lineNumbers></code></pre>
