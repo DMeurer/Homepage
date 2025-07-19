@@ -1,10 +1,10 @@
 <h1 class="page-header">My Projects</h1>
 
 <p style="margin-bottom: 50px">Here you can find some of my Projects.<br>
-Some of them are pretty small or have been abandoned, these are the earlier Projects. But i think its a nice little "how I started".</p>
+	Some of them are pretty small or have been abandoned, these are the earlier Projects. But i think its a nice little "how I started".</p>
 
 <div class="card-container">
-  @for (this_project of PROJECTS; track this_project) {
-    <app-project-card [project]="this_project"></app-project-card>
-  }
+	@for (this_project of PROJECTS; track this_project) {
+		<app-project-card [project]="this_project"></app-project-card>
+	}
 </div>

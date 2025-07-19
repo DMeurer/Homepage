@@ -35,7 +35,7 @@
 	The first draft was a oversimplification on what movements types we might have.
 </p>
 
-<app-image-wrapper alt="drawing of the three movement types" src="/blog/r2d2/two-wheel-movement/simple.svg" width="100%" height="auto"></app-image-wrapper>
+<app-image-wrapper alt="drawing of the three movement types" height="auto" src="/blog/r2d2/two-wheel-movement/simple.svg" width="100%"></app-image-wrapper>
 <p>
 	First we got straight, so both wheels have the same speed. Fairly simple.
 	Just calculate the distance one of the wheels should have travelled, and multiplying it with a normalized forward vector.
@@ -59,11 +59,11 @@
 <h3>The complex but universal solution</h3>
 
 <app-image-content-layout
-		imageSrc="/blog/r2d2/two-wheel-movement/geogebra-angle-calc.png"
 		imageAlt="angle calculation"
-		ratio="2img-1text"
+		imageHeight="auto"
 		imagePosition="right"
-		imageHeight="auto">
+		imageSrc="/blog/r2d2/two-wheel-movement/geogebra-angle-calc.png"
+		ratio="2img-1text">
 	
 	<p>
 		As this simplification wont cut it, we need something new.
@@ -77,7 +77,7 @@
 <p>
 	Ok so now lets look at what we want and what we've got. First of course what we know and can use for the calculation.
 </p>
-<app-image-wrapper alt="Drawing of how we calculate the angle" src="/blog/r2d2/two-wheel-movement/angle-calc.svg" width="100%" height="auto"></app-image-wrapper>
+<app-image-wrapper alt="Drawing of how we calculate the angle" height="auto" src="/blog/r2d2/two-wheel-movement/angle-calc.svg" width="100%"></app-image-wrapper>
 <p>
 	The following are three statements that are true and we can use them to calculate the angle, since we got three unknows and three equations.
 </p>
@@ -119,11 +119,11 @@
 </p>
 
 <app-image-content-layout
-		imageSrc="/blog/r2d2/two-wheel-movement/alternate-turning-point.svg"
 		imageAlt="drawing of the alternate turning point calculation"
-		ratio="2img-1text"
+		imageHeight="auto"
 		imagePosition="left"
-		imageHeight="auto">
+		imageSrc="/blog/r2d2/two-wheel-movement/alternate-turning-point.svg"
+		ratio="2img-1text">
 	<p>
 		By just pretending the wheels drive straight and individually we can draw two lines between the wheels, one in the new and on in the old position.<br>
 		The intersection of these two lines is the new turning point.
@@ -145,7 +145,7 @@
 	Adding the vectors will then look like this:
 </p>
 
-<app-image-wrapper alt="3D Admination using GeoGebra" src="/blog/r2d2/two-wheel-movement/3D-Sequence.gif" width="100%" height="auto"></app-image-wrapper>
+<app-image-wrapper alt="3D Admination using GeoGebra" height="auto" src="/blog/r2d2/two-wheel-movement/3D-Sequence.gif" width="100%"></app-image-wrapper>
 
 <p>
 	The yellow dotted line is the up vector, the black vectors are "center to turning point" and the rotated "center to turning point".<br>
@@ -157,13 +157,13 @@
 	Remember we use intersecting lines to calculate the turning point? Yeah we cant do that anymore.
 </p>
 
-<app-image-content-layout 
-		imageSrc="/blog/r2d2/two-wheel-movement/wikipedia-closest-points.svg"
+<app-image-content-layout
 		imageAlt="3D closest point calculation"
-		ratio="2img-1text"
 		imageBackgroundColor="#f0f0f0"
+		imageHeight="auto"
 		imagePosition="right"
-		imageHeight="auto">
+		imageSrc="/blog/r2d2/two-wheel-movement/wikipedia-closest-points.svg"
+		ratio="2img-1text">
 	<p>
 		Because of float imprecision, the lines will likely never intersect. So we need to find the points on the lines that are closest to each other.
 		Thankfully, since this something you learn in school, there are plenty of resources online, including a whole dedicated Wikipedia article including ready to steal algorithms for this.
@@ -178,7 +178,7 @@
 	So, have a look at the result:
 </p>
 
-<app-image-wrapper alt="3D Admination using GeoGebra" src="/blog/r2d2/two-wheel-movement/final-capture.gif" width="100%" height="auto"></app-image-wrapper>
+<app-image-wrapper alt="3D Admination using GeoGebra" height="auto" src="/blog/r2d2/two-wheel-movement/final-capture.gif" width="100%"></app-image-wrapper>
 
 <div class="footer-section">
 	<p>Cheers!</p>

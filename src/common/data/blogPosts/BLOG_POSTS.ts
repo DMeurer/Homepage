@@ -16,8 +16,8 @@ export const BLOG_POSTS: Project[] = [
 			},
 			{
 				name: "Unity",
-				type: ProjectChipType.TOOL
-			}
+				type: ProjectChipType.TOOL,
+			},
 		],
 	},
 ];

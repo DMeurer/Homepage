@@ -1,28 +1,31 @@
 .math-content-wrapper {
-	position: relative;
+  position: relative;
   display: block;
 }
 
+
 .copy-button {
-	position: absolute;
-	top: 4px;
-	right: 4px;
-	background: rgba(0, 0, 0, 0.7);
-	color: white;
-	border: none;
-	border-radius: 4px;
-	padding: 4px 6px;
-	font-size: 12px;
-	cursor: pointer;
-	opacity: 0;
-	transition: opacity 0.2s ease-in-out;
-	z-index: 10;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
 }
+
 
 .math-content-wrapper:hover .copy-button {
-	opacity: 1;
+  opacity: 1;
 }
 
+
 .copy-button:hover {
-	background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.9);
 }

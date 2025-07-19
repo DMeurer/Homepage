@@ -1,21 +1,21 @@
-<div class="layout-container" [ngClass]="containerClasses">
-  <!-- Single layout that works for both desktop and mobile -->
-  <div class="image-section" [ngClass]="imageSectionClasses">
-    <app-image-wrapper
-        [src]="imageSrc"
-        [alt]="imageAlt"
-        [width]="'100%'"
-        [height]="imageHeight"
-        [objectFit]="imageObjectFit"
-        [imageClass]="imageClass"
-        [backgroundColor]="imageBackgroundColor">
-    </app-image-wrapper>
-  </div>
-  
-  <div class="content-section" [ngClass]="contentSectionClasses">
-    <div class="content-wrapper">
-      <!-- This should work for content projection -->
-      <ng-content></ng-content>
-    </div>
-  </div>
+<div [ngClass]="containerClasses" class="layout-container">
+	<!-- Single layout that works for both desktop and mobile -->
+	<div [ngClass]="imageSectionClasses" class="image-section">
+		<app-image-wrapper
+				[alt]="imageAlt"
+				[backgroundColor]="imageBackgroundColor"
+				[height]="imageHeight"
+				[imageClass]="imageClass"
+				[objectFit]="imageObjectFit"
+				[src]="imageSrc"
+				[width]="'100%'">
+		</app-image-wrapper>
+	</div>
+	
+	<div [ngClass]="contentSectionClasses" class="content-section">
+		<div class="content-wrapper">
+			<!-- This should work for content projection -->
+			<ng-content></ng-content>
+		</div>
+	</div>
 </div>

@@ -22,7 +22,7 @@ export class R2d2TwoWheeledMovementComponent {
 			\t|r_l-r_{r}| &= \\text{wheelspacing}\\\\
 		\\end{align}
 		$$
-	`
+	`;
 	formula_angle_result = `
 		$$
 		\\begin{align}

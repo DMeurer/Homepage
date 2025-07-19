@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from "@angular/core/testing";
 
-import { MathJaxService } from './mathjax.service';
+import {MathJaxService} from "./mathjax.service";
 
-describe('MathJaxService', () => {
-  let service: MathJaxService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(MathJaxService);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+describe("MathJaxService", () => {
+	let service: MathJaxService;
+	
+	beforeEach(() => {
+		TestBed.configureTestingModule({});
+		service = TestBed.inject(MathJaxService);
+	});
+	
+	it("should be created", () => {
+		expect(service).toBeTruthy();
+	});
 });

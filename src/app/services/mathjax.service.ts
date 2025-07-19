@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 
 declare var MathJax: any;
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: "root",
 })
 export class MathJaxService {
 	private mathJaxLoaded = false;
@@ -13,14 +13,31 @@ export class MathJaxService {
 		this.initMathJax();
 	}
 	
+	async renderMath(element: HTMLElement): Promise<void> {
+		await this.initMathJax();
+		
+		if(this.mathJaxLoaded && MathJax && MathJax.typesetPromise) {
+			try {
+				await MathJax.typesetPromise([element]);
+			} catch(error) {
+				console.error("MathJax rendering error:", error);
+			}
+		}
+	}
+	
+	async renderMathContent(content: string): Promise<string> {
+		await this.initMathJax();
+		return content; // Return the content as-is, MathJax will process it
+	}
+	
 	private initMathJax() {
-		if (this.loadingPromise) {
+		if(this.loadingPromise) {
 			return this.loadingPromise;
 		}
 		
 		this.loadingPromise = new Promise<void>((resolve) => {
 			const checkMathJax = () => {
-				if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+				if(typeof MathJax !== "undefined" && MathJax.typesetPromise) {
 					this.mathJaxLoaded = true;
 					resolve();
 				} else {
@@ -31,22 +48,5 @@ export class MathJaxService {
 		});
 		
 		return this.loadingPromise;
-	}
-	
-	async renderMath(element: HTMLElement): Promise<void> {
-		await this.initMathJax();
-		
-		if (this.mathJaxLoaded && MathJax && MathJax.typesetPromise) {
-			try {
-				await MathJax.typesetPromise([element]);
-			} catch (error) {
-				console.error('MathJax rendering error:', error);
-			}
-		}
-	}
-	
-	async renderMathContent(content: string): Promise<string> {
-		await this.initMathJax();
-		return content; // Return the content as-is, MathJax will process it
 	}
 }

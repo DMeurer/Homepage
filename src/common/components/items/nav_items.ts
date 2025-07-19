@@ -15,7 +15,7 @@ export const SECTIONS: { [key: string]: NavItem } = {
 	[BLOG]: {
 		name: "Blog",
 		summary: "Articles about stuff I've made.",
-	}
+	},
 	/*
 	[ABOUT]: {
 		name: "About",

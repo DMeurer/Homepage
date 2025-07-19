@@ -11,5 +11,5 @@ export const routes: Routes = [
 	{
 		path: "r2d2/two-wheeled-movement",
 		component: R2d2TwoWheeledMovementComponent,
-	}
+	},
 ];

@@ -10,7 +10,7 @@
   body {
     background: mat.get-theme-color($theme, surface);
     color: mat.get-theme-color($theme, on-surface);
-    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
@@ -24,7 +24,7 @@
       padding-top: 112px; // More padding for mobile with two-row navbar
     }
   }
-  
+
   .docs-app-background {
     background: mat.get-theme-color($theme, surface);
     color: mat.get-theme-color($theme, on-surface);
@@ -42,12 +42,12 @@
     margin-top: 50px !important;
     color: mat.get-theme-color($theme, on-surface);
   }
-  
+
   h1, h2, h3 {
     margin-top: 30px !important;
     color: mat.get-theme-color($theme, on-surface);
   }
-  
+
   p {
     color: mat.get-theme-color($theme, on-surface);
     font-size: 16px;
@@ -85,7 +85,7 @@
     }
 
     a {
-      color: #00bcd4;
+      color: #00BCD4;
       text-decoration: none;
 
       &:hover {

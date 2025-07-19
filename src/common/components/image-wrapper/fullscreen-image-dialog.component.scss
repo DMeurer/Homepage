@@ -7,6 +7,7 @@
   justify-content: center;
 }
 
+
 .close-button {
   position: absolute;
   top: 20px;
@@ -18,15 +19,18 @@
   height: 48px;
 }
 
+
 .close-button:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
 
 .close-button mat-icon {
   font-size: 24px;
   width: 24px;
   height: 24px;
 }
+
 
 .image-wrapper {
   width: 100%;
@@ -37,6 +41,7 @@
   cursor: pointer;
   /* background will be set via [style.background] in template */
 }
+
 
 .fullscreen-image {
   max-width: 90vw;

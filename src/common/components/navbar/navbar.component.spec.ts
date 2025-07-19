@@ -1,7 +1,6 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {By} from "@angular/platform-browser";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
-import {Router, ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
 
 import {NavbarComponent} from "./navbar.component";
@@ -12,13 +11,13 @@ describe("NavbarComponent", () => {
 	let router: Router;
 	
 	beforeEach(async() => {
-		const activatedRouteSpy = jasmine.createSpyObj('ActivatedRoute', ['snapshot']);
+		const activatedRouteSpy = jasmine.createSpyObj("ActivatedRoute", ["snapshot"]);
 		
 		await TestBed.configureTestingModule({
 			imports: [NavbarComponent, NoopAnimationsModule, RouterTestingModule],
 			providers: [
-				{ provide: ActivatedRoute, useValue: activatedRouteSpy }
-			]
+				{provide: ActivatedRoute, useValue: activatedRouteSpy},
+			],
 		})
 			.compileComponents();
 		

@@ -1,6 +1,6 @@
+import {CommonModule} from "@angular/common";
 import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from "@angular/core";
 import {MathJaxService} from "../../../app/services/mathjax.service";
-import {CommonModule} from "@angular/common";
 
 @Component({
 	selector: "app-math-content",
@@ -19,7 +19,7 @@ import {CommonModule} from "@angular/common";
 			</button>
 		</div>
 	`,
-	styleUrls: ['./math-content.component.scss']
+	styleUrls: ["./math-content.component.scss"],
 })
 export class MathContentComponent implements AfterViewInit, OnChanges {
 	@Input() content: string = "";
@@ -40,6 +40,24 @@ export class MathContentComponent implements AfterViewInit, OnChanges {
 		}
 	}
 	
+	onMouseEnter() {
+		this.showCopyButton = true;
+	}
+	
+	onMouseLeave() {
+		this.showCopyButton = false;
+	}
+	
+	copyLatex() {
+		if(this.content) {
+			navigator.clipboard.writeText(this.content).then(() => {
+				console.log("LaTeX copied to clipboard");
+			}).catch(err => {
+				console.error("Failed to copy LaTeX: ", err);
+			});
+		}
+	}
+	
 	private updateContent() {
 		if(this.mathContainer) {
 			// Set the content directly to the DOM element
@@ -53,24 +71,6 @@ export class MathContentComponent implements AfterViewInit, OnChanges {
 			await this.mathJaxService.renderMath(this.mathContainer.nativeElement);
 		} catch(error) {
 			console.error("Error rendering math:", error);
-		}
-	}
-	
-	onMouseEnter() {
-		this.showCopyButton = true;
-	}
-	
-	onMouseLeave() {
-		this.showCopyButton = false;
-	}
-	
-	copyLatex() {
-		if (this.content) {
-			navigator.clipboard.writeText(this.content).then(() => {
-				console.log('LaTeX copied to clipboard');
-			}).catch(err => {
-				console.error('Failed to copy LaTeX: ', err);
-			});
 		}
 	}
 }

@@ -1,19 +1,19 @@
 <div class="fullscreen-container">
-  <button 
-    mat-icon-button 
-    class="close-button"
-    (click)="close()"
-    aria-label="Close fullscreen image"
-  >
-    <mat-icon>close</mat-icon>
-  </button>
-  
-  <div class="image-wrapper" (click)="close()">
-    <img 
-      [src]="data.src" 
-      [alt]="data.alt"
-      class="fullscreen-image"
-      [style.background]="data.backgroundColor || 'transparent'"
-    />
-  </div>
+	<button
+			(click)="close()"
+			aria-label="Close fullscreen image"
+			class="close-button"
+			mat-icon-button
+	>
+		<mat-icon>close</mat-icon>
+	</button>
+	
+	<div (click)="close()" class="image-wrapper">
+		<img
+				[alt]="data.alt"
+				[src]="data.src"
+				[style.background]="data.backgroundColor || 'transparent'"
+				class="fullscreen-image"
+		/>
+	</div>
 </div>

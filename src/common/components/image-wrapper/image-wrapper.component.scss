@@ -6,14 +6,17 @@
   border-radius: 8px;
 }
 
+
 .clickable-image {
   transition: transform 0.3s ease;
   display: block;
 }
 
+
 .image-container:hover .clickable-image {
   transform: scale(0.95);
 }
+
 
 .overlay {
   position: absolute;
@@ -29,9 +32,11 @@
   transition: opacity 0.3s ease;
 }
 
+
 .image-container:hover .overlay {
   opacity: 1;
 }
+
 
 .expand-icon {
   color: white;
