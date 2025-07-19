@@ -5,13 +5,13 @@ import {AppComponent} from "./app.component";
 
 describe("AppComponent", () => {
 	beforeEach(async() => {
-		const activatedRouteSpy = jasmine.createSpyObj('ActivatedRoute', ['snapshot']);
+		const activatedRouteSpy = jasmine.createSpyObj("ActivatedRoute", ["snapshot"]);
 		
 		await TestBed.configureTestingModule({
 			imports: [AppComponent, RouterTestingModule],
 			providers: [
-				{ provide: ActivatedRoute, useValue: activatedRouteSpy }
-			]
+				{provide: ActivatedRoute, useValue: activatedRouteSpy},
+			],
 		}).compileComponents();
 	});
 	

@@ -4,18 +4,18 @@ import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/mat
 import {RouterLink} from "@angular/router";
 
 @Component({
-    selector: "app-home",
-    imports: [
-        MatButton,
-        MatCard,
-        MatCardContent,
-        MatCardHeader,
-        MatCardTitle,
-        RouterLink
-    ],
-    templateUrl: "./home.component.html",
-    styleUrl: "./home.component.scss"
+	selector: "app-home",
+	imports: [
+		MatButton,
+		MatCard,
+		MatCardContent,
+		MatCardHeader,
+		MatCardTitle,
+		RouterLink,
+	],
+	templateUrl: "./home.component.html",
+	styleUrl: "./home.component.scss",
 })
 export class HomeComponent {
-
+	
 }
