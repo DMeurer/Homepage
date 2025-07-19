@@ -17,12 +17,13 @@ export class ImageWrapperComponent {
 	@Input() height: string = 'auto';
 	@Input() objectFit: string = 'cover';
 	@Input() imageClass: string = '';
-	
+	@Input() backgroundColor: string = 'transparent';
+
 	constructor(private dialog: MatDialog) {}
-	
+
 	openFullscreen() {
 		this.dialog.open(FullscreenImageDialog, {
-			data: { src: this.src, alt: this.alt },
+			data: { src: this.src, alt: this.alt, backgroundColor: this.backgroundColor },
 			panelClass: 'fullscreen-dialog',
 			maxWidth: '100vw',
 			maxHeight: '100vh',

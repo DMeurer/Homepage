@@ -19,6 +19,7 @@ export class ImageContentLayoutComponent {
 	@Input() ratio: LayoutRatio = '50-50';
 	@Input() imagePosition: ImagePosition = 'left';
 	@Input() imageClass: string = '';
+	@Input() imageBackgroundColor: string = 'transparent';
 	
 	get containerClasses() {
 		return {

@@ -1,6 +1,7 @@
 export interface Project {
 	tag: string;
 	name: string;
+	date?: Date;
 	description: string;
 	image?: string;
 	chips?: ProjectChips[];

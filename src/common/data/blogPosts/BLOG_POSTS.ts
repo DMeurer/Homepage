@@ -8,6 +8,7 @@ export const BLOG_POSTS: Project[] = [
 		name: "Simulating two wheeled movement",
 		description: "Simulating the movement of a R2D2-like robot",
 		image: "",
+		date: new Date("2023-10-01"),
 		chips: [
 			{
 				name: "R2D2 - Digital Twin",

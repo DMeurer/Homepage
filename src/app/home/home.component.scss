@@ -48,27 +48,6 @@
   width: 100%;
 }
 
-.footer-section {
-  text-align: center;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  
-  p {
-    font-size: 1rem;
-    opacity: 0.8;
-  }
-  
-  a {
-    color: #00bcd4;
-    text-decoration: none;
-    
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
 // Responsive adjustments
 @media (max-width: 768px) {
   .home-container {
