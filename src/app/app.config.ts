@@ -1,25 +1,23 @@
+import {provideHttpClient, withFetch} from "@angular/common/http";
 import {ApplicationConfig, provideZoneChangeDetection} from "@angular/core";
 import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 import {provideRouter} from "@angular/router";
 import {provideHighlightOptions} from "ngx-highlightjs";
+import {provideGistOptions} from "ngx-highlightjs/plus";
 
 import {routes} from "./app.routes";
 
 export const appConfig: ApplicationConfig = {
 	providers: [
+		provideHttpClient(withFetch()),
 		provideZoneChangeDetection({eventCoalescing: true}), provideRouter(routes), provideAnimationsAsync(),
 		provideHighlightOptions({
+			fullLibraryLoader: () => import("highlight.js"),
 			lineNumbersLoader: () => import("ngx-highlightjs/line-numbers"),
-			coreLibraryLoader: () => import("highlight.js/lib/core"),
-			/* This would only load the languages you need, reducing bundle size.
-			languages: {
-				typescript: () => import("highlight.js/lib/languages/typescript"),
-				css: () => import("highlight.js/lib/languages/css"),
-				xml: () => import("highlight.js/lib/languages/xml"),
-			},
-			 */
-			themePath: "assets/styles/androidstudio.css",
-			// themePath: "assets/styles/github-dark.css",
+		}),
+		provideGistOptions({
+			clientId: "",
+			clientSecret: "",
 		}),
 	],
 };
