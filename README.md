@@ -27,7 +27,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 Is done using [angular-cli-ghpages](https://www.npmjs.com/package/angular-cli-ghpages).
 
 ```shell
-ng deploy --cname=home.d-meurer.com
+ng deploy --cname=d-meurer.com
  ```
 
 ## Further help
