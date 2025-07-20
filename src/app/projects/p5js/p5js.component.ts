@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
-import {ProjectCardComponent} from "../../../common/components/project-card/project-card.component";
-import {PROJECTS_P5JS} from "../../../common/data/projects/projects";
+import {PROJECTS_P5JS} from "../../shared/data/projects/projects";
+import {ProjectCardComponent} from "../../shared/components/project-card/project-card.component";
 
 @Component({
 	selector: "app-p5js",

@@ -46,7 +46,17 @@
 	The following job is run every minute:
 </p>
 
-<pre><code [highlight]="(codeUrlCronjob | codeFromUrl | async) || ''" [language]="'sh'" lineNumbers></code></pre>
+<app-code-block 
+	[code]="'* * * * * sh /home/raspi/go-telegram-bot/deployment/cronjob.sh'" 
+	language="txt" 
+	fileName="cronjob configuration">
+</app-code-block>
+
+<app-code-block 
+	[code]="(codeUrlCronjob | codeFromUrl | async) || ''" 
+	language="sh" 
+	fileName="cronjob.sh">
+</app-code-block>
 
 <p>
 	What this script mostly does, is making sure the deployment is not happening multiple times in parallel, as this can lead to weird states and issues.<br>
@@ -55,7 +65,11 @@
 	Then this script will run the update script:
 </p>
 
-<pre><code [highlight]="(codeUrlCheckUpdates | codeFromUrl | async) || ''" [language]="'sh'" lineNumbers></code></pre>
+<app-code-block 
+	[code]="(codeUrlCheckUpdates | codeFromUrl | async) || ''" 
+	language="sh" 
+	fileName="check-updates.sh">
+</app-code-block>
 
 <p>
 	(Sorry for the weird highlighting issues)<br>
@@ -67,7 +81,11 @@
 	Because I wanted to use Docker, the deploy script couldn't be simpler than this:
 </p>
 
-<pre><code [highlight]="(codeUrlDeploy | codeFromUrl | async) || ''" [language]="'sh'" lineNumbers></code></pre>
+<app-code-block 
+	[code]="(codeUrlDeploy | codeFromUrl | async) || ''" 
+	language="sh" 
+	fileName="deploy.sh">
+</app-code-block>
 
 <p>
 	Just building the new image and starting a container with the new image. When the new container is running, the old one will be stopped and removed.<br>

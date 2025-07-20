@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
-import {ImageContentLayoutComponent} from "../../../../common/components/image-content-layout/image-content-layout.component";
-import {ImageWrapperComponent} from "../../../../common/components/image-wrapper/image-wrapper.component";
-import {MathContentComponent} from "../../../../common/components/math-content/math-content.component";
+import {ImageContentLayoutComponent} from "../../../shared/components/image-content-layout/image-content-layout.component";
+import {ImageWrapperComponent} from "../../../shared/components/image-wrapper/image-wrapper.component";
+import {MathContentComponent} from "../../../shared/components/math-content/math-content.component";
 
 @Component({
 	selector: "app-r2d2-two-wheeled-movement",

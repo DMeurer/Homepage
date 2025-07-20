@@ -1,0 +1,25 @@
+<div class="code-block-container">
+  <div class="code-header">
+    <span class="file-name" *ngIf="fileName">{{ fileName }}</span>
+    <div class="header-buttons">
+      <button 
+        class="header-btn copy-btn" 
+        (click)="copyCode()" 
+        title="Copy code">
+        <ng-icon name="matContentCopy" size="16"></ng-icon>
+      </button>
+      <button 
+        class="header-btn wrap-toggle-btn" 
+        (click)="toggleWrap()" 
+        [title]="wrapLines ? 'Switch to horizontal scroll' : 'Wrap long lines'"
+        [class.active]="wrapLines">
+        <ng-icon name="matWrapText" size="16"></ng-icon>
+      </button>
+    </div>
+  </div>
+  <pre [class.wrap-lines]="wrapLines"><code 
+    [highlight]="code" 
+    [language]="language" 
+    lineNumbers>
+  </code></pre>
+</div>

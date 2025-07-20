@@ -1,16 +1,14 @@
 import {AsyncPipe} from "@angular/common";
 import {Component} from "@angular/core";
-import {Highlight} from "ngx-highlightjs";
-import {HighlightLineNumbers} from "ngx-highlightjs/line-numbers";
-import {HighlightPlusModule} from "ngx-highlightjs/plus";
+import {CodeBlockComponent} from "../../shared/components/code-block/code-block.component";
+import {CodeFromUrlPipe} from "../../shared/pipes/code-from-url.pipe";
 
 @Component({
 	selector: "app-telegram-bot",
 	imports: [
-		HighlightLineNumbers,
-		Highlight,
-		HighlightPlusModule,
 		AsyncPipe,
+		CodeBlockComponent,
+		CodeFromUrlPipe,
 	],
 	templateUrl: "./telegram-bot.component.html",
 	styleUrl: "./telegram-bot.component.scss",

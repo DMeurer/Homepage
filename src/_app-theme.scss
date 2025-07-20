@@ -1,10 +1,10 @@
 @use "@angular/material" as mat;
 
-@use "./common/components/navbar/navbar-theme";
-@use "./common/components/logo/app-logo";
-@use "./common/components/project-card/project-card-theme";
-@use "./common/components/image-wrapper/image-wrapper-theme";
-@use "./common/code-themes/random-example";
+@use "app/shared/components/navbar/navbar-theme" as navbar-theme;
+@use "app/shared/components/logo/app-logo-theme" as app-logo;
+@use "app/shared/components/project-card/project-card-theme" as project-card-theme;
+@use "app/shared/components/image-wrapper/image-wrapper-theme" as image-wrapper-theme;
+@use "app/shared/code-themes/random-example" as code-random-example;
 
 // Styles for the docs app that are based on the current theme.
 @mixin theme($theme) {
@@ -99,5 +99,5 @@
   @include app-logo.theme($theme);
   @include project-card-theme.theme($theme);
   @include image-wrapper-theme.theme($theme);
-  @include random-example.theme($theme);
+  @include code-random-example.theme($theme);
 }

@@ -1,11 +1,12 @@
 import {CommonModule} from "@angular/common";
 import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from "@angular/core";
-import {MathJaxService} from "../../../app/services/mathjax.service";
+import {NgIcon} from "@ng-icons/core";
+import {MathJaxService} from "../../../services/mathjax.service";
 
 @Component({
 	selector: "app-math-content",
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, NgIcon],
 	template: `
 		<div class="math-content-wrapper"
 			 (mouseenter)="onMouseEnter()"
@@ -15,7 +16,7 @@ import {MathJaxService} from "../../../app/services/mathjax.service";
 					class="copy-button"
 					(click)="copyLatex()"
 					title="Copy LaTeX">
-				📋
+				<ng-icon name="matContentCopy" size="16"></ng-icon>
 			</button>
 		</div>
 	`,

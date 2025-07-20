@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
-import {ProjectCardComponent} from "../../common/components/project-card/project-card.component";
-import {BLOG_POSTS} from "../../common/data/blogPosts/BLOG_POSTS";
+import {BLOG_POSTS} from "../shared/data/blogPosts/BLOG_POSTS";
+import {ProjectCardComponent} from "../shared/components/project-card/project-card.component";
 
 @Component({
 	selector: "app-blog",
