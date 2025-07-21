@@ -19,4 +19,5 @@ export enum ProjectChipType {
 	USE_CASE = "use-case",
 	INTERFACE = "interface",
 	PARENT_PROJECT = "parent-project",
+	COMPLEXITY = "complexity",
 }

@@ -1,0 +1,57 @@
+<h1>Unity Landscape generation</h1>
+
+<p>Or more like planet generation</p>
+
+<app-image-content-layout
+		imageAlt="A generated planet"
+		imageHeight="auto"
+		imagePosition="left"
+		imageSrc="/projects/landscape-gen/splash2.png"
+		ratio="1img-2text">
+	
+	<p>
+		After playing No Man's Sky for a while, I wanted to experiment with procedural generation, and not being very inventive, I decided to try my hand at generating a planet as well.<br>
+		Safe to say, I lost interest very quickly, but It was a fun experiment nonetheless.
+	</p>
+	<p>
+		The Planet itself is made by procedurally generated meshes and applying perlin noise to them.
+	</p>
+</app-image-content-layout>
+
+<app-image-content-layout
+		imageAlt="Animation resolution increase"
+		imageHeight="auto"
+		imagePosition="right"
+		imageSrc="/projects/landscape-gen/resolution.webm"
+		ratio="2img-1text">
+	
+	<p>
+		As anything in the world of 3D software it starts with a cube. This cube is then inflated to make a ball.
+		Increasing the resolution of the planet then reveals more and more details.
+	</p>
+</app-image-content-layout>
+
+<app-image-content-layout
+		imageAlt="Animation mesh parts"
+		imageHeight="auto"
+		imagePosition="left"
+		imageSrc="/projects/landscape-gen/parts.webm"
+		ratio="1img-2text">
+	
+	<p>
+		The initial cube has a mesh per side. This has two reasons.<br>
+		First, Unity has a max size for meshes. Adding more triangles wont work, they just wont get rendered.
+		So to achieve a reasonable level of detail, I need to break into smaller pieces.<br>
+		This then allows to not render parts of the planet. Especially interesting for the meshes on the back side, as they are not visible anyways. This saves performance.
+	</p>
+</app-image-content-layout>
+
+<p>
+	The planets texture is made using multiple layers of perlin noise. The individual layers can be adjusted in any way imaginable, leading to some interesting patterns when "moving" a perlin noise pattern over the sphere.
+</p>
+
+<app-image-wrapper alt="moving noise" height="auto" src="/projects/landscape-gen/move-noise.webm" width="100%"></app-image-wrapper>
+
+<div class="footer-section">
+	<p>Cheers!</p>
+</div>

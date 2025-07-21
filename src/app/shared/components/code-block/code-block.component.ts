@@ -17,7 +17,7 @@ export class CodeBlockComponent {
   @Input() fileName?: string;
   @Input() showLineNumbers: boolean = true;
   
-  wrapLines: boolean = false;
+  wrapLines: boolean = true;
 
   toggleWrap(): void {
     this.wrapLines = !this.wrapLines;

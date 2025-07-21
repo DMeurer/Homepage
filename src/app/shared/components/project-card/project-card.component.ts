@@ -1,5 +1,5 @@
 import {formatDate} from "@angular/common";
-import {Component, Inject, Input, LOCALE_ID} from "@angular/core";
+import {Component, Inject, Input, LOCALE_ID, OnInit} from "@angular/core";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatChip, MatChipSet} from "@angular/material/chips";
 import {RouterLink} from "@angular/router";
@@ -23,13 +23,18 @@ import {Project} from "../../data/projects/datatypes";
 	templateUrl: "./project-card.component.html",
 	styleUrl: "./project-card.component.scss",
 })
-export class ProjectCardComponent {
+export class ProjectCardComponent implements OnInit {
 	
-	@Input!()
-	project!: Project;
-	protected dateString: string;
+	@Input!() project!: Project;
+	protected dateString: string = "";
 	
-	constructor(@Inject(LOCALE_ID) private locale: string) {
-		this.dateString = formatDate(Date.now(), "yyyy-MM-dd", this.locale);
+	constructor(@Inject(LOCALE_ID) private locale: string) {}
+	
+	ngOnInit(): void {
+		if (this.project?.date) {
+			this.dateString = formatDate(this.project.date, "yyyy-MM-dd", this.locale);
+		} else {
+			this.dateString = "";
+		}
 	}
 }

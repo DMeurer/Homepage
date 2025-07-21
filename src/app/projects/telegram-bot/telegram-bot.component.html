@@ -20,15 +20,47 @@
 	A quick look at what languages have libraries for the Telegram Bot API and I chose my weapon for this project: Go.
 </p>
 
-<p>
-	The bot itself is rather simple. It can echo, and print help messages like normal.
-	Additionally it can print some debug information like the current time and the uptime of the bot and the server.<br>
-	Some time later I added some more functionality some using external APIs or web scraping.<br>
-	The first was a ping. This was a simple method of checking if a device in my home network is on, as long as I have the IP address.<br>
-	The second was a IP Lookup. Also very simple, using a free API to get the location of an IP address.<br>
-	The third can send you this week's canteen menu from my university, which is a simple web scraping task.
-	You can choose if you want the full week or a single day, or get the current day by default.<br>
-</p>
+<app-image-content-layout
+		imageAlt="Chat with uptime command"
+		imageBackgroundColor="#f0f0f0"
+		imageHeight="auto"
+		imagePosition="right"
+		imageSrc="/projects/telegram-bot/cmd-uptime.png"
+		ratio="2img-1text">
+	<p>
+		The bot itself is rather simple. It can echo, and print help messages like normal.
+		Additionally it can print some debug information like the current time and the uptime of the bot and the server.
+	</p>
+</app-image-content-layout>
+
+<app-image-content-layout
+		imageAlt="Chat with ip command"
+		imageBackgroundColor="#f0f0f0"
+		imageHeight="auto"
+		imagePosition="left"
+		imageSrc="/projects/telegram-bot/cmd-ip.png"
+		ratio="1img-2text">
+	<p>
+		The first really useful command was a ping. This was a simple method of checking if a device in my home network is on, as long as I have the IP address.<br>
+		Some time later I added some more functionality some using external APIs or web scraping.<br>
+		The idea of APIs came with an IP Lookup. Also very simple, using a free API to get the location of an IP address.
+	</p>
+</app-image-content-layout>
+
+<app-image-content-layout
+		imageAlt="Chat with mensa command"
+		imageBackgroundColor="#f0f0f0"
+		imageHeight="auto"
+		imagePosition="right"
+		imageSrc="/projects/telegram-bot/cmd-mensa.png"
+		ratio="1img-2text">
+	<p>
+		The best one can send you this week's canteen menu from my university, which is a simple web scraping task.
+		You can choose if you want the full week or a single day, or get the current day by default.<br>
+		Im using this basically on a daily basis, as you have to type much into google to find the correct page.
+	</p>
+</app-image-content-layout>
+
 
 <h2>Containerizing a something</h2>
 <p>

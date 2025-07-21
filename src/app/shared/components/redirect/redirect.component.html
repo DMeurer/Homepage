@@ -1,0 +1,25 @@
+<div class="redirect-container">
+  <div class="redirect-content">
+    <h2>Redirecting to {{ projectName }}</h2>
+    
+    <div class="redirect-message">
+      <p>You will be automatically redirected to the project repository in:</p>
+      <div class="countdown">{{ countdown }}s</div>
+    </div>
+
+    <div class="redirect-link">
+      <p>If you are not redirected automatically, 
+        <a [href]="redirectUrl" target="_blank" rel="noopener noreferrer">
+          click here to visit {{ projectName }}
+        </a>
+      </p>
+    </div>
+
+    <button 
+      class="redirect-btn" 
+      (click)="redirectNow()"
+      type="button">
+      Go to {{ projectName }} Now
+    </button>
+  </div>
+</div>

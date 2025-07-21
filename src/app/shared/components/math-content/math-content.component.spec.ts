@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {MathJaxService} from "../../../app/services/mathjax.service";
+import {MathJaxService} from "../../../services/mathjax.service";
 
 import {MathContentComponent} from "./math-content.component";
 

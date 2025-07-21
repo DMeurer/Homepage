@@ -3,7 +3,20 @@
 	 [style.width]="width"
 	 class="image-container"
 >
-	<img
+	<video *ngIf="isVideo(); else imageTemplate"
+		   [style.height]="height"
+		   [style.object-fit]="objectFit"
+		   [style.width]="width"
+		   class="clickable-image"
+		   autoplay
+		   loop
+		   muted
+		   playsinline>
+		<source [src]="src" type="video/webm">
+		Your browser does not support the video tag.
+	</video>
+	<ng-template #imageTemplate>
+		<img
 			[alt]="alt"
 			[class]="imageClass"
 			[src]="src"
@@ -11,8 +24,9 @@
 			[style.object-fit]="objectFit"
 			[style.width]="width"
 			class="clickable-image"
-	/>
+		/>
+	</ng-template>
 	<div class="overlay">
-		<mat-icon class="expand-icon">fullscreen</mat-icon>
+		<ng-icon name="matFullscreen" size="64"></ng-icon>
 	</div>
 </div>

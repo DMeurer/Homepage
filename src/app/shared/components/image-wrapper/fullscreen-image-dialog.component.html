@@ -5,15 +5,27 @@
 			class="close-button"
 			mat-icon-button
 	>
-		<mat-icon>close</mat-icon>
+		<ng-icon name="matClose" size="32"></ng-icon>
 	</button>
 	
 	<div (click)="close()" class="image-wrapper">
-		<img
-				[alt]="data.alt"
-				[src]="data.src"
-				[style.background]="data.backgroundColor || 'transparent'"
-				class="fullscreen-image"
-		/>
+		<video *ngIf="isVideo(); else imageTemplate"
+			   [style.background]="data.backgroundColor || 'transparent'"
+			   class="fullscreen-image"
+			   autoplay
+			   loop
+			   playsinline
+			   controls>
+			<source [src]="data.src" type="video/webm">
+			Your browser does not support the video tag.
+		</video>
+		<ng-template #imageTemplate>
+			<img
+					[alt]="data.alt"
+					[src]="data.src"
+					[style.background]="data.backgroundColor || 'transparent'"
+					class="fullscreen-image"
+			/>
+		</ng-template>
 	</div>
 </div>
