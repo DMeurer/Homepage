@@ -6,6 +6,7 @@
   padding: 2rem;
 }
 
+
 .calculator {
   background-color: black;
   display: flex;
@@ -16,8 +17,9 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+
 .display {
-  background-color: #b2b9b7;
+  background-color: #B2B9B7;
   flex: 1 1 auto;
   margin: 20px;
   border-radius: 20px;
@@ -27,19 +29,21 @@
   padding: 0 10px;
 }
 
+
 .display-text {
   text-align: right;
   margin-right: 10px;
   font-size: 128px;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-weight: 300;
-  color: #333;
+  color: #333333;
   word-break: break-all;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 100%;
 }
+
 
 .button-row {
   flex: 1 1 auto;
@@ -48,6 +52,7 @@
   padding-left: 5px;
   padding-right: 5px;
 }
+
 
 button {
   border-radius: 15px;
@@ -74,93 +79,101 @@ button {
   }
 }
 
+
 .operator {
   background-color: #FF8F1F;
 
   &:focus {
-    background-color: #ffc183;
+    background-color: #FFC183;
   }
 
   &:hover {
-    background-color: #ffb366;
+    background-color: #FFB366;
   }
 
   &:active {
-    background-color: #ffc183;
+    background-color: #FFC183;
   }
 }
+
 
 .equals {
   background-color: #FF8F1F;
 
   &:hover {
-    background-color: #ffb366;
+    background-color: #FFB366;
   }
 
   &:active {
-    background-color: #ffc183;
+    background-color: #FFC183;
   }
 }
+
 
 .operand {
   background-color: #217C7E;
 
   &:hover {
-    background-color: #2a9a9c;
+    background-color: #2A9A9C;
   }
 
   &:active {
-    background-color: #33b9bb;
+    background-color: #33B9BB;
   }
 }
+
 
 .decimal {
   background-color: #217C7E;
 
   &:hover {
-    background-color: #2a9a9c;
+    background-color: #2A9A9C;
   }
 
   &:active {
-    background-color: #33b9bb;
+    background-color: #33B9BB;
   }
 }
+
 
 .clear {
   background-color: dodgerblue;
 
   &:hover {
-    background-color: #4fa8ff;
+    background-color: #4FA8FF;
   }
 
   &:active {
     background-color: rgb(123, 189, 255);
   }
 }
+
 
 .sign {
   background-color: dodgerblue;
 
   &:hover {
-    background-color: #4fa8ff;
+    background-color: #4FA8FF;
   }
 
   &:active {
     background-color: rgb(123, 189, 255);
   }
 }
+
 
 .percent {
   background-color: dodgerblue;
 
   &:hover {
-    background-color: #4fa8ff;
+    background-color: #4FA8FF;
   }
 
   &:active {
     background-color: rgb(123, 189, 255);
   }
 }
+
 
 // Responsive design
 @media (max-width: 768px) {
@@ -182,6 +195,7 @@ button {
     font-size: 24px;
   }
 }
+
 
 @media (max-width: 480px) {
   .calculator {

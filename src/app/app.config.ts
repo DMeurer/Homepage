@@ -2,10 +2,10 @@ import {provideHttpClient, withFetch} from "@angular/common/http";
 import {ApplicationConfig, provideZoneChangeDetection} from "@angular/core";
 import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 import {provideRouter} from "@angular/router";
+import {provideIcons} from "@ng-icons/core";
+import {matClose, matContentCopy, matFullscreen, matWrapText} from "@ng-icons/material-icons/baseline";
 import {provideHighlightOptions} from "ngx-highlightjs";
 import {provideGistOptions} from "ngx-highlightjs/plus";
-import {provideIcons} from "@ng-icons/core";
-import {matWrapText, matContentCopy, matFullscreen, matClose} from "@ng-icons/material-icons/baseline";
 
 import {routes} from "./app.routes";
 

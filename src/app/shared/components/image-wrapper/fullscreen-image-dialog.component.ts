@@ -1,9 +1,9 @@
+import {NgIf} from "@angular/common";
 import {Component, Inject} from "@angular/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
 import {NgIcon} from "@ng-icons/core";
-import {NgIf} from "@angular/common";
 
 @Component({
 	selector: "app-fullscreen-image-dialog",
@@ -18,7 +18,7 @@ export class FullscreenImageDialog {
 	) {}
 	
 	isVideo(): boolean {
-		return this.data.src.endsWith('.webm') || this.data.src.endsWith('.mp4');
+		return this.data.src.endsWith(".webm") || this.data.src.endsWith(".mp4");
 	}
 	
 	close() {

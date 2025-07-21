@@ -11,11 +11,11 @@
 	<div (click)="close()" class="image-wrapper">
 		<video *ngIf="isVideo(); else imageTemplate"
 			   [style.background]="data.backgroundColor || 'transparent'"
-			   class="fullscreen-image"
 			   autoplay
+			   class="fullscreen-image"
+			   controls
 			   loop
-			   playsinline
-			   controls>
+			   playsinline>
 			<source [src]="data.src" type="video/webm">
 			Your browser does not support the video tag.
 		</video>

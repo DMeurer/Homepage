@@ -7,4 +7,5 @@ import {RedirectComponent} from "../../shared/components/redirect/redirect.compo
 	templateUrl: "./improved-potato.component.html",
 	styleUrl: "./improved-potato.component.scss",
 })
-export class ImprovedPotatoComponent {}
+export class ImprovedPotatoComponent {
+}

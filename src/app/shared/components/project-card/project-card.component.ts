@@ -31,7 +31,7 @@ export class ProjectCardComponent implements OnInit {
 	constructor(@Inject(LOCALE_ID) private locale: string) {}
 	
 	ngOnInit(): void {
-		if (this.project?.date) {
+		if(this.project?.date) {
 			this.dateString = formatDate(this.project.date, "yyyy-MM-dd", this.locale);
 		} else {
 			this.dateString = "";

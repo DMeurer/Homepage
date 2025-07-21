@@ -1,36 +1,36 @@
 <div class="calculator-container">
-  <div class="calculator">
-    <div class="display">
-      <div class="display-text">{{ displayText }}</div>
-    </div>
-    <div class="button-row">
-      <button class="clear" (click)="allClear()">AC</button>
-      <button class="sign" (click)="signInput()">&minus;</button>
-      <button class="percent" (click)="operatorInput('%')">&percnt;</button>
-      <button class="operator" (click)="operatorInput('/')">&divide;</button>
-    </div>
-    <div class="button-row">
-      <button class="operand" (click)="numberInput(7)">7</button>
-      <button class="operand" (click)="numberInput(8)">8</button>
-      <button class="operand" (click)="numberInput(9)">9</button>
-      <button class="operator" (click)="operatorInput('*')">&times;</button>
-    </div>
-    <div class="button-row">
-      <button class="operand" (click)="numberInput(4)">4</button>
-      <button class="operand" (click)="numberInput(5)">5</button>
-      <button class="operand" (click)="numberInput(6)">6</button>
-      <button class="operator" (click)="operatorInput('-')">&minus;</button>
-    </div>
-    <div class="button-row">
-      <button class="operand" (click)="numberInput(1)">1</button>
-      <button class="operand" (click)="numberInput(2)">2</button>
-      <button class="operand" (click)="numberInput(3)">3</button>
-      <button class="operator" (click)="operatorInput('+')">+</button>
-    </div>
-    <div class="button-row">
-      <button class="operand zero" (click)="numberInput(0)">0</button>
-      <button class="decimal" (click)="decimalInput()">.</button>
-      <button class="equals" (click)="sumInput()">=</button>
-    </div>
-  </div>
+	<div class="calculator">
+		<div class="display">
+			<div class="display-text">{{ displayText }}</div>
+		</div>
+		<div class="button-row">
+			<button (click)="allClear()" class="clear">AC</button>
+			<button (click)="signInput()" class="sign">&minus;</button>
+			<button (click)="operatorInput('%')" class="percent">&percnt;</button>
+			<button (click)="operatorInput('/')" class="operator">&divide;</button>
+		</div>
+		<div class="button-row">
+			<button (click)="numberInput(7)" class="operand">7</button>
+			<button (click)="numberInput(8)" class="operand">8</button>
+			<button (click)="numberInput(9)" class="operand">9</button>
+			<button (click)="operatorInput('*')" class="operator">&times;</button>
+		</div>
+		<div class="button-row">
+			<button (click)="numberInput(4)" class="operand">4</button>
+			<button (click)="numberInput(5)" class="operand">5</button>
+			<button (click)="numberInput(6)" class="operand">6</button>
+			<button (click)="operatorInput('-')" class="operator">&minus;</button>
+		</div>
+		<div class="button-row">
+			<button (click)="numberInput(1)" class="operand">1</button>
+			<button (click)="numberInput(2)" class="operand">2</button>
+			<button (click)="numberInput(3)" class="operand">3</button>
+			<button (click)="operatorInput('+')" class="operator">+</button>
+		</div>
+		<div class="button-row">
+			<button (click)="numberInput(0)" class="operand zero">0</button>
+			<button (click)="decimalInput()" class="decimal">.</button>
+			<button (click)="sumInput()" class="equals">=</button>
+		</div>
+	</div>
 </div>
