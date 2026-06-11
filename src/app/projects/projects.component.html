@@ -14,3 +14,11 @@
 		<app-project-card [project]="this_project"></app-project-card>
 	}
 </div>
+
+<h2>Smaller Projects</h2>
+
+<div class="card-container">
+	@for (this_project of PROJECTS_SMALLER; track this_project) {
+		<app-project-card [project]="this_project"></app-project-card>
+	}
+</div>

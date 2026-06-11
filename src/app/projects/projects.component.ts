@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ProjectCardComponent} from "../shared/components/project-card/project-card.component";
-import {PROJECTS} from "../shared/data/projects/projects";
+import {PROJECTS, PROJECTS_SMALLER} from "../shared/data/projects/projects";
 
 @Component({
 	selector: "app-projects",
@@ -12,4 +12,5 @@ import {PROJECTS} from "../shared/data/projects/projects";
 })
 export class ProjectsComponent {
 	protected readonly PROJECTS = PROJECTS;
+	protected readonly PROJECTS_SMALLER = PROJECTS_SMALLER;
 }

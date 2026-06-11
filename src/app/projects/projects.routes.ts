@@ -2,6 +2,7 @@ import {Routes} from "@angular/router";
 import {CalculatorComponent} from "./calculator/calculator.component";
 import {ImprovedPotatoComponent} from "./improved-potato/improved-potato.component";
 import {LandscapeGenComponent} from "./landscape-gen/landscape-gen.component";
+import {MatrixBotComponent} from "./matrix-bot/matrix-bot.component";
 import {PrettyPrintDmeurerComponent} from "./pretty-print-dmeurer/pretty-print-dmeurer.component";
 import {ProjectsComponent} from "./projects.component";
 import {TelegramBotComponent} from "./telegram-bot/telegram-bot.component";
@@ -28,6 +29,10 @@ export const routes: Routes = [
 	{
 		path: "improved-potato",
 		component: ImprovedPotatoComponent,
+	},
+	{
+		path: "matrix-bot",
+		component: MatrixBotComponent,
 	},
 	{
 		path: "web-scraper-library",

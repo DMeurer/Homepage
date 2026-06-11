@@ -1,0 +1,55 @@
+<h1>Matrix Bot</h1>
+
+<p>
+	This is a simple chatbot for the Matrix protocol.
+	My previous chatbot was running on telegram, simply because whatsapp didnt allow it.
+	But when I started to host my own Matrix instance, I had created a new "main" chat app for me. And more importantly, one where I can do whatever I want.
+</p>
+
+<p>
+	The project uses <code>matrix-sdk</code> for chat, <code>reqwest</code> and <code>scraper</code> for HTTP scraping, and SQLite for persistence.
+</p>
+
+<h2>What it does</h2>
+
+<p>
+	The functionality is a bit different from what I previously had on the telegram bot. Simply because the canteen menu was the only thing I really used.
+	So only the canteen menu is transferred to the new codebase.
+</p>
+
+<p>
+	Something new is the alert system. This allows to set alerts on websites. The bot will then use polling to check the page, and send a message if anything changes.
+	This system was designed for me and my friends on the matrix instance, so creating alerts will require extra (bot admin) permissions. Additionally, all (permitted) users can see and change all alerts.
+</p>
+
+<h3>Example alert flow</h3>
+
+<app-chat-window
+		[messages]="alertMessages"
+		subtitle="Tracking a hackathon page for when the registration is open"
+		title="Matrix room">
+</app-chat-window>
+
+<h2>Configuration</h2>
+
+<p>
+	The bot is configured through environment variables. The important part is the Matrix login and the optional allow-list for admin users.
+</p>
+
+<app-code-block
+		[code]="envExample"
+		fileName=".env"
+		language="text">
+</app-code-block>
+
+<h2>Deployment</h2>
+
+<p>
+	Deployment is intentionally boring: Docker Compose starts the bot, and a cron job checks for updates and rebuilds the container when needed.
+	This homemade DevOps setup definitely has limitations, but is more than enough for an application like this.<br>
+	With this a zero downtime deployment is possible, it will only have downtimes when a release is broken because a rollback takes time.
+</p>
+
+<div class="footer-section">
+	<p>Cheers!</p>
+</div>

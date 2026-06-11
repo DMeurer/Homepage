@@ -11,8 +11,12 @@ export const BLOG_POSTS: Project[] = [
 		date: new Date("2025-07-019"),
 		chips: [
 			{
-				name: "R2D2 - Digital Twin",
+				name: "R2D2",
 				type: ProjectChipType.PARENT_PROJECT,
+			},
+			{
+				name: "Digital Twin",
+				type: ProjectChipType.USE_CASE,
 			},
 			{
 				name: "Unity",

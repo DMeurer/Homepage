@@ -1,0 +1,27 @@
+<section class="chat-window">
+	<header class="chat-header">
+		<div>
+			<h3>{{ title }}</h3>
+			@if (subtitle) {
+				<p>{{ subtitle }}</p>
+			}
+		</div>
+		<span class="chat-badge">Group chat</span>
+	</header>
+
+	<div class="chat-messages">
+		@for (message of messages; track message; let last = $last) {
+			<article class="chat-message" [class.last-message]="last">
+				<div class="message-meta">
+					<span class="sender">{{ message.sender }}</span>
+					@if (message.timestamp) {
+						<span class="timestamp">{{ message.timestamp }}</span>
+					}
+				</div>
+				<div class="message-bubble">
+					<p>{{ message.text }}</p>
+				</div>
+			</article>
+		}
+	</div>
+</section>

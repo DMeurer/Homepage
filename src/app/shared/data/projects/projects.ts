@@ -4,25 +4,29 @@ import {Project, ProjectChipType} from "./datatypes";
 // Routes have to be edited in src/app/projects/projects.routes.ts
 export const PROJECTS: Project[] = [
 	{
-		tag: "telegram-bot",
-		name: "Telegram Bot",
-		description: "A Telegram bot to interact with some APIs. Kind of went out of Ideas, so there is not much functionality. I dont really use Telegram, its just easier to work with than WhatsApp.",
-		image: "/projects/telegramBot.png",
+		tag: "matrix-bot",
+		name: "Matrix Bot",
+		description: "A Rust Matrix bot that posts the Mensa Furtwangen menu, watches websites for changes, and some more. I just made my own Matrix instance and want to replace the Telegram bot.",
+		image: "/projects/matrix-bot/cover.svg",
 		chips: [
 			{
 				name: "Intermediate",
 				type: ProjectChipType.COMPLEXITY,
 			},
 			{
-				name: "Go",
+				name: "Rust",
 				type: ProjectChipType.LANGUAGE,
+			},
+			{
+				name: "Matrix",
+				type: ProjectChipType.INTERFACE,
 			},
 			{
 				name: "Docker",
 				type: ProjectChipType.TOOL,
 			},
 			{
-				name: "Telegram",
+				name: "Website Monitoring",
 				type: ProjectChipType.USE_CASE,
 			},
 		],
@@ -48,6 +52,34 @@ export const PROJECTS: Project[] = [
 			{
 				name: "Theme",
 				type: ProjectChipType.INTERFACE,
+			},
+		],
+	},
+];
+
+
+export const PROJECTS_SMALLER: Project[] = [
+	{
+		tag: "telegram-bot",
+		name: "Telegram Bot",
+		description: "A Telegram bot to interact with some APIs. Kind of went out of Ideas, so there is not much functionality. I dont really use Telegram, its just easier to work with than WhatsApp.",
+		image: "/projects/telegramBot.png",
+		chips: [
+			{
+				name: "Intermediate",
+				type: ProjectChipType.COMPLEXITY,
+			},
+			{
+				name: "Go",
+				type: ProjectChipType.LANGUAGE,
+			},
+			{
+				name: "Docker",
+				type: ProjectChipType.TOOL,
+			},
+			{
+				name: "Telegram",
+				type: ProjectChipType.USE_CASE,
 			},
 		],
 	},
