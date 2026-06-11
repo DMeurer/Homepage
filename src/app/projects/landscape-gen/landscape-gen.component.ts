@@ -18,7 +18,7 @@ import {ProjectLink} from "../../shared/data/projects/datatypes";
 export class LandscapeGenComponent {
 	
 	protected readonly links: ProjectLink[] = [
-		{label: "Repository", url: "https://github.com/DMeurer/go-telegram-bot", icon: "matCode"},
+		{label: "Repository", url: "https://github.com/DMeurer/UnityLandscapeGen", icon: "matCode"},
 	];
 	
 }
