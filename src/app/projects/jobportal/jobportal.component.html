@@ -1,0 +1,134 @@
+<h1>Job Portal</h1>
+
+<!-- TODO: Better card image -->
+
+<p>
+	The Job Portal is the first fullstack app I have developed at home. The idea is simple: I want to keep an eye on the job openings of a few companies I'm interested in,
+	without checking a dozen career pages by hand every week. So instead I let a bunch of scrapers do it for me, store every listing in a database,
+	and look at the whole thing through a dashboard.
+</p>
+
+<p>
+	What makes it more interesting than a one-off scraper is that it doesn't just store the <em>current</em> openings. It takes a snapshot every day,
+	so I can actually see how things change over time: which positions are new, which ones disappeared, and how long a job stays online before it's filled.
+</p>
+
+<h2>The architecture</h2>
+
+<p>
+	It's a multi-service application, split into three repositories that are pulled together as git submodules. Each part does one job and talks to the others over HTTP:
+</p>
+
+<ul>
+	<li><strong>Backend</strong> &ndash; a FastAPI service with a PostgreSQL database. It owns all the data and exposes the REST API.</li>
+	<li><strong>Frontend</strong> &ndash; an Angular dashboard that visualizes the statistics.</li>
+	<li><strong>Runners</strong> &ndash; the Python scrapers, one per company, running on a schedule.</li>
+</ul>
+
+<p>
+	The whole stack is wired together with Docker Compose, so a single <code>make up</code> starts the database, the API, the dashboard and the scrapers:
+</p>
+
+<app-code-block
+		[code]="composeExample"
+		fileName="docker-compose.yml"
+		language="yaml">
+</app-code-block>
+
+<h2>The data model</h2>
+
+<p>
+	The trick to tracking change over time is in how the data is stored. There are three main tables:
+</p>
+
+<ul>
+	<li><strong>Companies</strong> &ndash; the sources I scrape from.</li>
+	<li><strong>Jobs</strong> &ndash; a single listing, identified by its company and the external job id or URL.</li>
+	<li><strong>Inserts</strong> &ndash; one row for every day a job was seen during a scrape.</li>
+</ul>
+
+<p>
+	That <code>inserts</code> table is the important one. A job isn't simply "open" or "closed" &ndash; instead, every scrape writes down "I saw this job today".
+	By comparing the set of jobs seen on two days I can derive everything else: a job on today's snapshot that wasn't on yesterday's is <em>new</em>,
+	one that was there yesterday but is gone today was <em>removed</em>, and the gap between the first and last time a job was seen tells me how long it was online.
+</p>
+
+<h2>The scrapers</h2>
+
+<p>
+	Every company gets its own scraper, and they all push their results to the same API endpoint using a shared client. A small orchestrator runs them one after another,
+	and inside the runners container a cron job kicks the whole thing off once a day. Adding a new source mostly means writing one more scraper class and registering it.
+</p>
+
+<p>
+	The runners live in a <strong>private repository</strong> on purpose. The scraping logic is specific to each company's career page, and I'd rather not publish the full list of
+	who I'm watching or how. This is because while some companies allow non-commercial scraping and republishing, other only allow this for personal use.
+	Anything for personal use will stay hidden.<br>
+	Publicly, the dashboard shows a handful of companies from my region &ndash; <strong>B.&nbsp;Braun</strong>,
+	<strong>KLS Matrin</strong> and <strong>Kauth</strong> &ndash; while the rest stay hidden.
+</p>
+
+<h3>Data Quality</h3>
+
+<p>
+	The data quality of the the produced dataset is by far the worst dataset I have word with.<br>
+	Jab pages have synonyms for the same thing, and multiple pages have entirely different names for the same stuff.
+	For example: All companies have some sort of open positions for students or apprentices.
+	Some will call this have them together, some split up, some will just call it "after school".<br>
+	As much as this is really bugging me, I have not implemented a proper cleaning of the scraped data.
+	Definitely not production ready and actually barely ready at all, but I can live with this and fixing this would be a huge amount of work.
+</p>
+
+<h2>Hidden companies and API keys</h2>
+
+<p>
+	I wanted the dashboard to be shareable without exposing every source I track. So companies carry a <code>hidden</code> flag, and access is controlled through API keys with different permissions.
+	There are four fixed keys, each with its own scope:
+</p>
+
+<app-code-block
+		[code]="envExample"
+		fileName=".env"
+		language="text">
+</app-code-block>
+
+<p>
+	Every read query runs through the same filter: unless the key has the <code>read_hidden</code> permission (or is the admin key), hidden companies are quietly dropped from the results.
+	The frontend ships with the read-only key, so anyone using the public dashboard only ever sees the non-hidden companies. With a full-read key I get the complete picture.
+	The scrapers use a separate write key, which keeps the thing that <em>fills</em> the database away from the keys that only <em>read</em> it.
+</p>
+
+<h2>The API</h2>
+
+<p>
+	The backend is where most of the work happens. Besides the basic CRUD it has a fairly rich filtering endpoint: you can query jobs by company, level, location, contract type,
+	by the date they were found, and by their status on that date (new, existing or removed). Titles and functions can even be filtered with regular expressions.
+	The same endpoint can return aggregated statistics instead of raw listings, which is exactly what the dashboard needs.
+</p>
+
+<app-code-block
+		[code]="apiExample"
+		fileName="example requests"
+		language="bash">
+</app-code-block>
+
+<h2>The dashboard</h2>
+
+<p>
+	The frontend is deliberately small. The main page is a chart of the total open positions across all accessible companies over the last 30 days,
+	so I can see trends at a glance. A settings page lets me point it at a different API URL or drop in a stronger API key (to unlock the hidden companies),
+	and everything is stored in the browser's local storage. No backend session, no login &ndash; the API key <em>is</em> the login.
+</p>
+
+<!-- TODO: Add a screenshot -->
+
+<h2>Deployment</h2>
+
+<p>
+	Deployment follows the same homemade pattern I use for my other projects: Docker Compose for the services and a cron job that rebuilds containers when there's a new release.
+	The runners run on their own cron schedule inside the stack, so once it's up it quietly collects a new snapshot every day without me touching it.
+</p>
+
+<div class="footer-section">
+	<p>Cheers!</p>
+</div>

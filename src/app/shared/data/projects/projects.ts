@@ -4,6 +4,34 @@ import {Project, ProjectChipType} from "./datatypes";
 // Routes have to be edited in src/app/projects/projects.routes.ts
 export const PROJECTS: Project[] = [
 	{
+		tag: "jobportal",
+		name: "Job Portal",
+		description: "A multi-service app that scrapes job listings from companies I'm interested in and tracks how the openings change over time. FastAPI backend, Angular dashboard, and a set of Python scrapers, all glued together with Docker.",
+		image: "/projects/jobportal/cover.svg",
+		chips: [
+			{
+				name: "Intermediate",
+				type: ProjectChipType.COMPLEXITY,
+			},
+			{
+				name: "FastAPI",
+				type: ProjectChipType.TOOL,
+			},
+			{
+				name: "PostgreSQL",
+				type: ProjectChipType.TOOL,
+			},
+			{
+				name: "Angular",
+				type: ProjectChipType.TOOL,
+			},
+			{
+				name: "Web Scraping",
+				type: ProjectChipType.USE_CASE,
+			},
+		],
+	},
+	{
 		tag: "matrix-bot",
 		name: "Matrix Bot",
 		description: "A Rust Matrix bot that posts the Mensa Furtwangen menu, watches websites for changes, and some more. I just made my own Matrix instance and want to replace the Telegram bot.",
