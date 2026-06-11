@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1200 1000"
+   role="img"
+   aria-labelledby="title desc"
+   version="1.1"
+   id="svg23"
+   sodipodi:docname="cover.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview23"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1"
+     inkscape:cx="440"
+     inkscape:cy="500.5"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="2552"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg23" />
+  <title
+     id="title">Solar Dashboard cover</title>
+  <desc
+     id="desc">Dark banner with the Solar Dashboard title, a sun, a Gaussian solar generation curve, and feature labels.</desc>
+  <defs
+     id="defs6">
+    <linearGradient
+       id="bg"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#0b1220"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#0f1a2b"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="curve"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#fbbf24"
+         stop-opacity="0.75"
+         id="stop3" />
+      <stop
+         offset="1"
+         stop-color="#fbbf24"
+         stop-opacity="0.05"
+         id="stop4" />
+    </linearGradient>
+    <radialGradient
+       id="sun"
+       cx="0.5"
+       cy="0.5"
+       r="0.5">
+      <stop
+         offset="0"
+         stop-color="#fde68a"
+         id="stop5" />
+      <stop
+         offset="1"
+         stop-color="#f59e0b"
+         id="stop6" />
+    </radialGradient>
+    <linearGradient
+       id="curve-4"
+       x1="71.581675"
+       y1="653.79862"
+       x2="71.581675"
+       y2="1171.3892"
+       gradientTransform="scale(1.8161073,0.55062827)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#fbbf24"
+         stop-opacity="0.75"
+         id="stop3-8" />
+      <stop
+         offset="1"
+         stop-color="#fbbf24"
+         stop-opacity="0.05"
+         id="stop4-8" />
+    </linearGradient>
+  </defs>
+  <rect
+     width="1200"
+     height="1000"
+     fill="url(#bg)"
+     id="rect6" />
+  <!-- sun -->
+  <g
+     stroke="#f59e0b"
+     stroke-width="6"
+     stroke-linecap="round"
+     id="g13">
+    <line
+       x1="1010"
+       y1="150"
+       x2="1010"
+       y2="92"
+       id="line6" />
+    <line
+       x1="1010"
+       y1="350"
+       x2="1010"
+       y2="408"
+       id="line7" />
+    <line
+       x1="910"
+       y1="250"
+       x2="852"
+       y2="250"
+       id="line8" />
+    <line
+       x1="1110"
+       y1="250"
+       x2="1168"
+       y2="250"
+       id="line9" />
+    <line
+       x1="939"
+       y1="179"
+       x2="898"
+       y2="138"
+       id="line10" />
+    <line
+       x1="1081"
+       y1="179"
+       x2="1122"
+       y2="138"
+       id="line11" />
+    <line
+       x1="939"
+       y1="321"
+       x2="898"
+       y2="362"
+       id="line12" />
+    <line
+       x1="1081"
+       y1="321"
+       x2="1122"
+       y2="362"
+       id="line13" />
+  </g>
+  <circle
+     cx="1010"
+     cy="250"
+     r="64"
+     fill="url(#sun)"
+     id="circle13" />
+  <!-- title -->
+  <text
+     x="80"
+     y="185"
+     fill="#f1f5f9"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="92"
+     font-weight="700"
+     id="text13">Solar Dashboard</text>
+  <text
+     x="84"
+     y="255"
+     fill="#fbbf24"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="40px"
+     font-weight="600"
+     id="text14"><tspan
+       sodipodi:role="line"
+       id="tspan23"
+       x="84"
+       y="255">Model solar, consumption &amp; battery</tspan><tspan
+       sodipodi:role="line"
+       id="tspan24"
+       x="84"
+       y="305">in the browser</tspan></text>
+  <!-- generation curve -->
+  <line
+     x1="80"
+     y1="645"
+     x2="1120"
+     y2="645"
+     stroke="#1f2d44"
+     stroke-width="3"
+     id="line14"
+     inkscape:label="ground" />
+  <path
+     d="m 130,645 c 57.5,0 105,-17.8125 146.5625,-44.53125 C 318.125,573.75 349.75,523.125 383.5,487.5 417.25,451.875 452.125,463.25 486.1875,436.53125 520.25,409.8125 557.5,360 600,360 c 42.5,0 84.75,-3.1875 118.8125,23.53125 C 752.875,410.25 751.75,527.875 785.5,563.5 c 33.75,35.625 86.375,-21.75 127.9375,4.96875 C 955,595.1875 1012.5,645 1070,645 Z"
+     fill="url(#curve)"
+     id="path14-4"
+     inkscape:label="sunBack"
+     style="display:inline;fill:url(#curve-4)"
+     sodipodi:nodetypes="cssssssscc" />
+  <path
+     d="m 132,644.5 c 57.5,0 105,-17.8125 146.5625,-44.53125 C 320.125,573.25 351.75,520.625 385.5,485 419.25,449.375 460.125,457.75 494.1875,431.03125 528.25,404.3125 559.5,359.5 602,359.5 c 42.5,0 87.75,0.8125 121.8125,27.53125 C 757.875,413.75 749.75,529.375 783.5,565 c 33.75,35.625 95.375,-20.75 136.9375,5.96875 C 962,597.6875 1014.5,644.5 1072,644.5"
+     fill="none"
+     stroke="#fbbf24"
+     stroke-width="5"
+     id="path15-9"
+     inkscape:label="sunLine"
+     sodipodi:nodetypes="csssssssc" />
+  <path
+     d="m 130,645 c 230,0 300,-285 470,-285 170,0 240,285 470,285 z"
+     fill="url(#curve)"
+     id="path14"
+     inkscape:label="sunBack"
+     style="display:none" />
+  <path
+     d="m 130,645 c 57.5,0 105,-12.1875 146.5625,-30.46875 C 318.125,596.25 352.75,553.875 386.5,529.5 420.25,505.125 453.125,511.75 487.1875,493.46875 521.25,475.1875 557.5,450 600,450 c 170,0 240,0 470,0"
+     fill="none"
+     stroke="#fbbf24"
+     stroke-width="5"
+     id="path15"
+     inkscape:label="sunLine"
+     style="display:inline;stroke:#16a8fb;stroke-opacity:1"
+     sodipodi:nodetypes="cssssc" />
+  <path
+     d="m 130,645 c 230,0 300,-285 470,-285 170,0 240,285 470,285"
+     fill="none"
+     stroke="#fbbf24"
+     stroke-width="5"
+     id="path15-5"
+     inkscape:label="sunLine"
+     style="display:none" />
+  <!-- feature pills -->
+  <g
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="36"
+     font-weight="700"
+     id="g20">
+    <g
+       fill="#221a07"
+       stroke="#fbbf24"
+       stroke-width="2"
+       id="g17">
+      <rect
+         x="80"
+         y="720"
+         width="320"
+         height="110"
+         rx="22"
+         id="rect15" />
+      <rect
+         x="440"
+         y="720"
+         width="320"
+         height="110"
+         rx="22"
+         id="rect16" />
+      <rect
+         x="800"
+         y="720"
+         width="320"
+         height="110"
+         rx="22"
+         id="rect17" />
+    </g>
+    <g
+       fill="#fef3c7"
+       text-anchor="middle"
+       id="g19"
+       transform="translate(0,-4)">
+      <text
+         x="240"
+         y="789"
+         id="text17">Generation</text>
+      <text
+         x="600"
+         y="789"
+         id="text18">Battery</text>
+      <text
+         x="960"
+         y="789"
+         id="text19">Consumption</text>
+    </g>
+  </g>
+  <!-- terminal dots -->
+  <g
+     fill="#fbbf24"
+     id="g23">
+    <circle
+       cx="92"
+       cy="905"
+       r="9"
+       id="circle20" />
+    <circle
+       cx="124"
+       cy="905"
+       r="9"
+       id="circle21" />
+    <circle
+       cx="156"
+       cy="905"
+       r="9"
+       id="circle22" />
+    <rect
+       x="190"
+       y="897"
+       width="560"
+       height="16"
+       rx="8"
+       id="rect22" />
+    <rect
+       x="190"
+       y="933"
+       width="700"
+       height="16"
+       rx="8"
+       opacity="0.65"
+       id="rect23" />
+  </g>
+</svg>
