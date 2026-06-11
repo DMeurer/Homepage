@@ -33,15 +33,27 @@ $theme: mat.define-theme((
   // Increase specific typography sizes
   h1 { font-size: 2.5rem; }
 
-  h2 { font-size: 2rem; }
+  // h2 = major section header: large, bold, with a subtle divider rule.
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
 
-  h3 { font-size: 1.75rem; }
+  // h3 = sub-heading: clearly smaller and in the accent colour, so it
+  // reads as a different level from the h2 above it.
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #00BCD4;
+  }
 
-  h4 { font-size: 1.5rem; }
+  h4 { font-size: 1.2rem; }
 
-  h5 { font-size: 1.25rem; }
+  h5 { font-size: 1.1rem; }
 
-  h6 { font-size: 1.125rem; }
+  h6 { font-size: 1rem; }
 
   p, div, span {
     font-size: 16px;

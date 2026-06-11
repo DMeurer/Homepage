@@ -1,6 +1,6 @@
 <h1>Job Portal</h1>
 
-<!-- TODO: Better card image -->
+<app-project-links [links]="links"></app-project-links>
 
 <p>
 	The Job Portal is the first fullstack app I have developed at home. The idea is simple: I want to keep an eye on the job openings of a few companies I'm interested in,
@@ -20,9 +20,9 @@
 </p>
 
 <ul>
-	<li><strong>Backend</strong> &ndash; a FastAPI service with a PostgreSQL database. It owns all the data and exposes the REST API.</li>
-	<li><strong>Frontend</strong> &ndash; an Angular dashboard that visualizes the statistics.</li>
-	<li><strong>Runners</strong> &ndash; the Python scrapers, one per company, running on a schedule.</li>
+	<li><strong>Backend:</strong> a FastAPI service with a PostgreSQL database. It owns all the data and exposes the REST API.</li>
+	<li><strong>Frontend:</strong> an Angular dashboard that visualizes the statistics.</li>
+	<li><strong>Runners:</strong> the Python scrapers, one per company, running on a schedule.</li>
 </ul>
 
 <p>
@@ -42,13 +42,13 @@
 </p>
 
 <ul>
-	<li><strong>Companies</strong> &ndash; the sources I scrape from.</li>
-	<li><strong>Jobs</strong> &ndash; a single listing, identified by its company and the external job id or URL.</li>
-	<li><strong>Inserts</strong> &ndash; one row for every day a job was seen during a scrape.</li>
+	<li><strong>Companies:</strong> the sources I scrape from.</li>
+	<li><strong>Jobs:</strong> a single listing, identified by its company and the external job id or URL.</li>
+	<li><strong>Inserts:</strong> one row for every day a job was seen during a scrape.</li>
 </ul>
 
 <p>
-	That <code>inserts</code> table is the important one. A job isn't simply "open" or "closed" &ndash; instead, every scrape writes down "I saw this job today".
+	That <code>inserts</code> table is the important one. A job isn't simply "open" or "closed". Instead, every scrape writes down "I saw this job today".
 	By comparing the set of jobs seen on two days I can derive everything else: a job on today's snapshot that wasn't on yesterday's is <em>new</em>,
 	one that was there yesterday but is gone today was <em>removed</em>, and the gap between the first and last time a job was seen tells me how long it was online.
 </p>
@@ -64,15 +64,15 @@
 	The runners live in a <strong>private repository</strong> on purpose. The scraping logic is specific to each company's career page, and I'd rather not publish the full list of
 	who I'm watching or how. This is because while some companies allow non-commercial scraping and republishing, other only allow this for personal use.
 	Anything for personal use will stay hidden.<br>
-	Publicly, the dashboard shows a handful of companies from my region &ndash; <strong>B.&nbsp;Braun</strong>,
-	<strong>KLS Matrin</strong> and <strong>Kauth</strong> &ndash; while the rest stay hidden.
+	Publicly, the dashboard shows a handful of companies from my region, <strong>B.&nbsp;Braun</strong>,
+	<strong>KLS Matrin</strong> and <strong>Kauth</strong>, while the rest stay hidden.
 </p>
 
 <h3>Data Quality</h3>
 
 <p>
-	The data quality of the the produced dataset is by far the worst dataset I have word with.<br>
-	Jab pages have synonyms for the same thing, and multiple pages have entirely different names for the same stuff.
+	The data quality of the the produced dataset is by far the worst dataset I have worked with.<br>
+	Job pages have synonyms for the same thing, and multiple pages have entirely different names for the same stuff.
 	For example: All companies have some sort of open positions for students or apprentices.
 	Some will call this have them together, some split up, some will just call it "after school".<br>
 	As much as this is really bugging me, I have not implemented a proper cleaning of the scraped data.
@@ -117,10 +117,16 @@
 <p>
 	The frontend is deliberately small. The main page is a chart of the total open positions across all accessible companies over the last 30 days,
 	so I can see trends at a glance. A settings page lets me point it at a different API URL or drop in a stronger API key (to unlock the hidden companies),
-	and everything is stored in the browser's local storage. No backend session, no login &ndash; the API key <em>is</em> the login.
+	and everything is stored in the browser's local storage. No backend session, no login. The API key <em>is</em> the login.
 </p>
 
-<!-- TODO: Add a screenshot -->
+<p>
+	The most most information is in the "Time Curve". This diagram will show you the history of all jobs for the company.
+	It will show how many new ones popped up, and how many jobs disappeared.<br>
+	But the view wont stop at the aggregates. Every single bar is clickable and acts as a filter for a list of jobs below. So can select green bar on a day you want and you will get a list of all jobs created that day.
+</p>
+
+<app-image-wrapper alt="example of a solar power forecast" height="auto" src="/projects/jobportal/dayselect-kls.png" width="100%"></app-image-wrapper>
 
 <h2>Deployment</h2>
 

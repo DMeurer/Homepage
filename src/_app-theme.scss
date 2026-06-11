@@ -55,6 +55,22 @@
     line-height: 1.6;
   }
 
+  // Inline links inside article / blog prose (bare <a href>, no class).
+  // Keep them looking like normal underlined links, but pin every state
+  // to the theme accent so the default "visited" purple stops clashing
+  // with the dark background.
+  .content a:not([class]) {
+    color: #00BCD4;
+
+    &:visited {
+      color: #00BCD4;
+    }
+
+    &:hover {
+      color: #4DD0E1;
+    }
+  }
+
   .iframe-container {
     display: flex;
     justify-content: center;

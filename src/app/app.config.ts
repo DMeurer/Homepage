@@ -3,7 +3,7 @@ import {ApplicationConfig, provideZoneChangeDetection} from "@angular/core";
 import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
 import {provideRouter} from "@angular/router";
 import {provideIcons} from "@ng-icons/core";
-import {matClose, matContentCopy, matFullscreen, matWrapText} from "@ng-icons/material-icons/baseline";
+import {matClose, matCode, matContentCopy, matFullscreen, matLink, matOpenInNew, matWrapText} from "@ng-icons/material-icons/baseline";
 import {provideHighlightOptions} from "ngx-highlightjs";
 import {provideGistOptions} from "ngx-highlightjs/plus";
 
@@ -21,6 +21,6 @@ export const appConfig: ApplicationConfig = {
 			clientId: "",
 			clientSecret: "",
 		}),
-		provideIcons({matWrapText, matContentCopy, matFullscreen, matClose}),
+		provideIcons({matWrapText, matContentCopy, matFullscreen, matClose, matOpenInNew, matLink, matCode}),
 	],
 };

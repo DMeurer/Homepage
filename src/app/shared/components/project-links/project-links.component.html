@@ -1,0 +1,16 @@
+@if (links.length) {
+	<div class="project-links">
+		@for (link of links; track link.url) {
+			<a
+				class="project-links__tag"
+				[href]="link.url"
+				target="_blank"
+				rel="noopener noreferrer">
+				@if (link.icon) {
+					<ng-icon class="project-links__icon" [name]="link.icon" size="1rem"></ng-icon>
+				}
+				<span>{{ link.label }}</span>
+			</a>
+		}
+	</div>
+}

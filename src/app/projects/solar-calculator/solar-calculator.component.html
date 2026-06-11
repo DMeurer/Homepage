@@ -1,0 +1,94 @@
+<h1>Solar Dashboard</h1>
+
+<app-project-links [links]="links"></app-project-links>
+
+<p>
+	The Solar Dashboard is a browser-based solar energy calculator. When you get the idea to buy solar panels, you kind of want to know how much this will actually benefit you <em>before</em> committing to one.
+	You have to figure out how big should the panels be, is a battery worth it, and how much of my own consumption could I actually cover?
+	My Ideas on what I want to calculate quickly outgrew Excel, but this showed me it can work.
+</p>
+
+<p>
+	The whole thing runs client-side &ndash; there is no backend, no account, no data leaving the browser. Every calculation happens on the fly while you tweak the inputs. So feel free to give it a try.
+</p>
+
+<div class="cta-section">
+	<app-cta-button href="https://solar.d-meurer.com" label="Check it out"></app-cta-button>
+</div>
+
+<h2>The solar model</h2>
+
+<p>
+	The core of the dashboard is the solar generation curve. A perfect day of solar output would look roughly like a bell curve &ndash; nothing at night, a smooth ramp up to a midday peak,
+	and back down towards sunset. So that is exactly what I model: a Gaussian fitted between a sunrise and sunset minute, with the spread of the curve derived from the day length.<br>
+	But a perfect day is highly unlikely, so I had to make a better assumption. Adding a bit of randomness would surely help, but <a href="https://open-meteo.com/">Open Meteo</a> actually has a nice and free API that suits this needs.
+</p>
+
+<app-image-wrapper alt="example of a solar power forecast" height="auto" src="/projects/solar-calculator/only-solar.png" width="100%"></app-image-wrapper>
+
+<h2>Consumers</h2>
+
+<p>
+	The other half of the equation is what you actually use. You build up a household from a list of devices, each with a name, a wattage, an active time window. Group them so you have a additional group line in the graph.
+	To make that less tedious there are a bunch of ready-made templates across six categories: kitchen, laundry, entertainment, climate, water and mobility.
+	So adding a dishwasher or an EV charger is one click. You just have to look up if your device is using the same wattage.
+	The consumers can be dragged around to reorder them, and together they add up to the consumption curve that gets subtracted from the solar output.
+</p>
+
+<app-image-wrapper alt="example of a solar power forecast" height="auto" src="/projects/solar-calculator/consumers.png" width="100%"></app-image-wrapper>
+
+<p>
+	Now in the example above you can see that the peak, caused by the washing machine, will consume more that is available and cause a grid import.
+	Later when the peak is over, too much power is generated and power is exported to the grid. Or lost.
+</p>
+
+<h2>Battery simulation</h2>
+
+<p>
+	Exporting to the grid is fine, but the power is worth more if you can use it yourself.
+	But how much is actually stored in a battery and how long will that last me?<br>
+	With the solar generation and household consumption, I already have all I need. Just save to the Power that is too much to the battery instead of adding it to the export.<br>
+	Sadly its not that simple. First of all, the battery has a finite capacity, and much more important: it has a maximum charging rate.
+	A battery will (thankfully) cap out at some point, in may cases a fairly low point.<br>
+	In the example from above this is not an issue, but if the sun would be out, it would be likely.
+</p>
+
+<app-image-wrapper alt="example of a solar power forecast" height="auto" src="/projects/solar-calculator/battery.png" width="100%"></app-image-wrapper>
+
+<p>
+	Now with the battery in, we could (for this day) buy a battery half the capacity and we would still use 100% of the generated power ourselves.
+</p>
+
+<h2>Metrics and the week view</h2>
+
+<p>
+	Now this provide you with a really in-depth view of the power consumption.<br>
+	When should I schedule my washing machine? Can I charge my EV using solar? How long until I have a return on invest in solar?<br>
+	All these questions can be answered here. Well, not all of them to be precise.
+</p>
+<p>
+	Switching to the 7-day view runs the same model seven times. Each day with its own weather preset
+	and stacks the results into an energy bar chart, which is a much more honest picture than a single sunny day.<br>
+	Now you can see if this is a good-weather once-in-a-year thing, or if this is actually a solid plan.
+</p>
+
+<app-image-wrapper alt="example of a solar power forecast" height="auto" src="/projects/solar-calculator/7day.png" width="100%"></app-image-wrapper>
+
+<h2>Sharing a setup</h2>
+
+<p>
+	Since there is no backend, there is nothing to save a configuration to, but sharing is caring and you might give someone else a look.<br>
+	To provide a shareable link despite having no backend, the url is used to carry the data. A big json object with all of the users configuration is converted to base 64 and added to the url.
+</p>
+
+<h2>Tech stack</h2>
+
+<p>
+	This one is a React project rather than my usual Angular &ndash; I wanted to actually use React for something instead of only having read about it.
+	It is built with Vite, the charts are drawn with Recharts, state lives in a small Zustand store and the styling is Tailwind. The interface is translated into German and English with i18next.
+	The whole thing is a static bundle, so deployment is just pushing to <code>main</code> and letting GitHub Actions publish it to GitHub Pages.
+</p>
+
+<div class="footer-section">
+	<p>Cheers!</p>
+</div>

@@ -4,6 +4,34 @@ import {Project, ProjectChipType} from "./datatypes";
 // Routes have to be edited in src/app/projects/projects.routes.ts
 export const PROJECTS: Project[] = [
 	{
+		tag: "solar-calculator",
+		name: "Solar Dashboard",
+		description: "A browser-based solar energy calculator. Model panels, household consumption and a battery across a day or week, and see how much of your own power you could cover. Everything runs client-side, no backend required.",
+		image: "/projects/solar-calculator/cover.svg",
+		chips: [
+			{
+				name: "Intermediate",
+				type: ProjectChipType.COMPLEXITY,
+			},
+			{
+				name: "TypeScript",
+				type: ProjectChipType.LANGUAGE,
+			},
+			{
+				name: "React",
+				type: ProjectChipType.TOOL,
+			},
+			{
+				name: "Solar Simulation",
+				type: ProjectChipType.USE_CASE,
+			},
+			{
+				name: "Website",
+				type: ProjectChipType.INTERFACE,
+			},
+		],
+	},
+	{
 		tag: "jobportal",
 		name: "Job Portal",
 		description: "A multi-service app that scrapes job listings from companies I'm interested in and tracks how the openings change over time. FastAPI backend, Angular dashboard, and a set of Python scrapers, all glued together with Docker.",

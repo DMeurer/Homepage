@@ -1,14 +1,24 @@
 import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {CodeBlockComponent} from "../../shared/components/code-block/code-block.component";
+import {ImageWrapperComponent} from "../../shared/components/image-wrapper/image-wrapper.component";
+import {ProjectLinksComponent} from "../../shared/components/project-links/project-links.component";
+import {ProjectLink} from "../../shared/data/projects/datatypes";
 
 @Component({
 	selector: "app-jobportal",
-	imports: [CodeBlockComponent],
+	imports: [CodeBlockComponent, ProjectLinksComponent, ImageWrapperComponent],
 	templateUrl: "./jobportal.component.html",
 	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./jobportal.component.scss",
 })
 export class JobportalComponent {
+	protected readonly links: ProjectLink[] = [
+		{label: "Live page", url: "https://jobs.dmeurer.dev", icon: "matOpenInNew"},
+		{label: "Main repo", url: "https://github.com/DMeurer/JobPortal", icon: "matCode"},
+		{label: "Frontend repo", url: "https://github.com/DMeurer/JobPortal-Frontend", icon: "matCode"},
+		{label: "Backend repo", url: "https://github.com/DMeurer/JobPortal-Backend", icon: "matCode"},
+	];
+
 	protected readonly composeExample = `services:
   postgres:    # PostgreSQL - stores companies, jobs and daily snapshots
   backend:     # FastAPI - the REST API, port 8000

@@ -1,0 +1,28 @@
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 8px;
+  background: #00BCD4;
+  color: #06222a;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+
+  &:hover {
+    background: #26C6DA;
+    box-shadow: 0 4px 14px rgba(0, 188, 212, 0.3);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &__icon {
+    display: inline-flex;
+  }
+}

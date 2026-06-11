@@ -4,6 +4,31 @@ import {Project, ProjectChipType} from "../projects/datatypes";
 // Routes have to be edited in src/app/projects/projects.routes.ts
 export const BLOG_POSTS: Project[] = [
 	{
+		tag: "matrix-server",
+		name: "Self-hosting a Matrix server",
+		description: "Building a self-hosted, bridged Matrix server as a Beeper replacement I actually own.",
+		image: "/blog/matrix-server/cover.svg",
+		date: new Date("2026-06-11"),
+		chips: [
+			{
+				name: "Self-Hosting",
+				type: ProjectChipType.USE_CASE,
+			},
+			{
+				name: "Matrix",
+				type: ProjectChipType.INTERFACE,
+			},
+			{
+				name: "Ansible",
+				type: ProjectChipType.TOOL,
+			},
+			{
+				name: "Synapse",
+				type: ProjectChipType.TOOL,
+			},
+		],
+	},
+	{
 		tag: "r2d2/two-wheeled-movement",
 		name: "Simulating two wheeled movement",
 		description: "Simulating the movement of a R2D2-like robot",

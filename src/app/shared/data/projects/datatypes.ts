@@ -13,6 +13,13 @@ export interface ProjectChips {
 	icon?: string;
 }
 
+export interface ProjectLink {
+	label: string;
+	url: string;
+	/** Name of a registered ng-icon shown before the label. */
+	icon?: string;
+}
+
 export enum ProjectChipType {
 	LANGUAGE = "language",
 	TOOL = "tool",

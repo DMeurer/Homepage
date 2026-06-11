@@ -1,0 +1,122 @@
+<h1 class="page-header">Self-hosting a Matrix server</h1>
+
+<p>
+	For a while I was a happy <a href="https://www.beeper.com/" target="_blank" rel="noopener">Beeper</a> user. The pitch is great:
+	all your chat networks (WhatsApp, Signal, Telegram and the rest) in a single app. The catch is that every message you send
+	flows through someone else's infrastructure and will be unencrypted at some point. I wanted that same one-inbox-for-everything experience, but on hardware I control and with data that is mine.
+</p>
+
+<p>
+	Matrix makes that possible. It is an open, federated chat protocol, and crucially it has a whole ecosystem of <em>bridges</em> that connect it to the
+	closed networks everyone else uses. This is actually how Beeper works in the first place. So the plan is simple: build a self-hosted Beeper replacement by running a Synapse server with all the bridges I want.
+</p>
+
+<h2>Not reinventing the wheel</h2>
+
+<p>
+	I did not set up Synapse, Postgres, a reverse proxy and a dozen bridges by hand. That looked like something I really dont want to do and kept me from starting with this a long time.
+	Instead the whole server is described by Slavi Pantaleev's excellent <a href="https://github.com/spantaleev/matrix-docker-ansible-deploy" target="_blank" rel="noopener">matrix-docker-ansible-deploy</a> playbook.
+	Everything runs as Docker containers, and a single Ansible run brings the server from "fresh VPS" to "working matrix server".
+</p>
+
+<p>
+	The entire configuration lives in one <code>vars.yml</code> file. The core of it is almost boring: pick a domain, pick a homeserver implementation
+	(Synapse, the reference server), and let the playbook manage its own Traefik reverse proxy, which fetches Let's Encrypt certificates on demand.
+</p>
+
+<app-code-block
+		[code]="coreExample"
+		fileName="host_vars/matrix.dmeurer.dev/vars.yml"
+		language="yaml">
+</app-code-block>
+
+<h2>The bridges</h2>
+
+<p>
+	This is where the playbook earns its keep. Each network I want to fold into Matrix is essentially a single boolean in the config.
+	Behind each one is a <code>mautrix</code> (or similar) appservice that logs into the other network on my behalf and mirrors the conversations into Matrix rooms.
+</p>
+
+<app-code-block
+		[code]="bridgesExample"
+		fileName="vars.yml - bridges"
+		language="yaml">
+</app-code-block>
+
+<p>
+	That gives me WhatsApp, Signal, Telegram, Discord, Instagram, Google Messages, LinkedIn and even Steam, all landing in the same client.
+	The bridged rooms are end-to-end encrypted, so the messages aren't sitting around in plaintext just because they took a detour through my server.
+	This is very important for me, because with only limited control over this installation, I have to fully trust the editors of the playbook with security.
+	When the messages are encrypted on the server, even if there are vulnerabilities or I miss an important security update, no one will be able to read my or the bridged messages.
+</p>
+
+<h3>Relay mode</h3>
+
+<p>
+	This was very much beyond my initial use case and idea, but with unlimited possibilities on my own chat network come many stupid ideas.<br>
+	But lets take a step back. Relay mode is intended to connect users in a single group chat across multiple chat networks.
+	Normally if you want to do this, you will use a bot on both networks to relay messages.
+	For Matrix this done extremely well with one bot per user on the other network, but on the other network its usually the bot account writing "Alice sent a message: [message]".
+	Sadly WhatsApp wont give out bot account easily, so I had to use my own account.<br>
+	But back to my plan. I wanted it for one slightly silly reason: getting my own <button [routerLink]="['/projects/matrix-bot']">Matrix bot</button> into a WhatsApp group chat.
+	That way all my friends could also ask what the canteen menu is. The result looks like this:
+</p>
+
+<app-chat-window
+		[messages]="mensaMessages"
+		subtitle="WhatsApp side - Matrix Bridge enabled with relay mode"
+		title="Group chat">
+</app-chat-window>
+
+<h2>The uncomfortable hosting truth</h2>
+
+<p>
+	Here is the part that slightly undercuts the whole "own my data" motivation: the server currently runs on a <strong>Hetzner</strong> VM, not in my own homelab.
+	My homelab server broke not too long ago, and a chat server that I depend on needs to be reliable more than it needs to be ideologically pure.
+	A rented machine that stays up, my own didn't. I am at peace with the trade-off. For now.
+</p>
+
+<h2>From "just me" to a few friends</h2>
+
+<p>
+	The server was only ever meant for me. But a homeserver that already bridges half the internet turns out to be a tempting thing to share, and a couple of friends
+	wanted to join. That changed the calculus a bit: a toy for one person can fall over and nobody cares, but once other people rely on it I want to know how it is doing.
+</p>
+
+<h3>Keeping an eye on it with Grafana</h3>
+
+<p>
+	Before I gave access to anyone, I added monitoring.
+	I absolutely did cut corners when it came to hardware, renting the cheapest VPS with shared vCPU available, so I need to know when I have to stop allowing more users or need to upscale.
+	The playbook wires up a stack of Prometheus exporters. One for the host, one for Postgres,
+	one for Synapse's own usage stats, and they fee directly into Grafana.
+</p>
+
+<app-code-block
+		[code]="monitoringExample"
+		fileName="vars.yml - monitoring"
+		language="yaml">
+</app-code-block>
+
+<p>
+	Mostly I use it to watch CPU and memory, so I can answer a single question: can the server take a few more users, or is it already at its limit?
+	It is much nicer to make that call from a graph than from a gut feeling. And it is absolutely possible. The entire stack is running so lightweight, its only using 10 % CPU and 50 % of RAM for one user.<br>
+	There is only one concern, so big it gets its own chapter
+</p>
+
+<h3>What's next: storage</h3>
+
+<p>
+	The VPS has 40 GB of storage, 20 of that already filled with the system and a month worth of my chats. Upscaling the server will double this and the monthly price. So that would be okay only once.<br>
+	There is one great solution to this problem. The Ansible Playbook actually supports just plonking a S3 Bucket in and using this as media server. And as I highly doubt that I will 20 GB with chat messages, that sounds great.
+	Only thing is, I need a S3 Bucket. Thankfully Hetzner has a ready to use S3 Bucket plan, that will only cost about 5€ per TB, along with some transfer limitations.
+	But most media will be historical and rarely accessed, so I believe the transfer limits will be enough for my usecase.
+</p>
+
+<p>
+	Now the only thing to worry about is the migration from on-device storage to the S3 Bucket. But that will only become relevant when I run out of space.
+</p>
+
+<div class="footer-section">
+	<p>Cheers!</p>
+</div>

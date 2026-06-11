@@ -1,0 +1,10 @@
+<a
+	class="cta-button"
+	[href]="href"
+	[attr.target]="external ? '_blank' : null"
+	[attr.rel]="external ? 'noopener noreferrer' : null">
+	<span class="cta-button__label">{{ label }}</span>
+	@if (icon) {
+		<ng-icon class="cta-button__icon" [name]="icon" size="1.2rem"></ng-icon>
+	}
+</a>
