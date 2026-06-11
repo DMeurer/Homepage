@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {ImageContentLayoutComponent} from "../../shared/components/image-content-layout/image-content-layout.component";
 import {ImageWrapperComponent} from "../../shared/components/image-wrapper/image-wrapper.component";
 
@@ -9,6 +9,7 @@ import {ImageWrapperComponent} from "../../shared/components/image-wrapper/image
 		ImageContentLayoutComponent,
 	],
 	templateUrl: "./landscape-gen.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./landscape-gen.component.scss",
 })
 export class LandscapeGenComponent {

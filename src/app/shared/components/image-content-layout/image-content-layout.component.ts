@@ -1,5 +1,5 @@
 import {CommonModule} from "@angular/common";
-import {Component, Input} from "@angular/core";
+import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 import {ImageWrapperComponent} from "../image-wrapper/image-wrapper.component";
 
 export type LayoutRatio = "2img-1text" | "50-50" | "1img-2text";
@@ -9,6 +9,7 @@ export type ImagePosition = "left" | "right";
 	selector: "app-image-content-layout",
 	imports: [CommonModule, ImageWrapperComponent],
 	templateUrl: "./image-content-layout.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./image-content-layout.component.scss",
 })
 export class ImageContentLayoutComponent {

@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {ProjectCardComponent} from "../shared/components/project-card/project-card.component";
 import {BLOG_POSTS} from "../shared/data/blogPosts/BLOG_POSTS";
 
@@ -8,6 +8,7 @@ import {BLOG_POSTS} from "../shared/data/blogPosts/BLOG_POSTS";
 		ProjectCardComponent,
 	],
 	templateUrl: "./blog.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./blog.component.scss",
 })
 export class BlogComponent {

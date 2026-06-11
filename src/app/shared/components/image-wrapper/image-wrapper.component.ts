@@ -1,5 +1,5 @@
-import {NgIf} from "@angular/common";
-import {Component, Input} from "@angular/core";
+
+import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
@@ -9,8 +9,9 @@ import {FullscreenImageDialog} from "./fullscreen-image-dialog.component";
 
 @Component({
 	selector: "app-image-wrapper",
-	imports: [MatIconModule, MatButtonModule, MatDialogModule, NgIcon, NgIf],
+	imports: [MatIconModule, MatButtonModule, MatDialogModule, NgIcon],
 	templateUrl: "./image-wrapper.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./image-wrapper.component.scss",
 })
 export class ImageWrapperComponent {

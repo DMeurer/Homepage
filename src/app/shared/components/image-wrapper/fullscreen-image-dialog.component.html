@@ -1,31 +1,32 @@
 <div class="fullscreen-container">
-	<button
-			(click)="close()"
-			aria-label="Close fullscreen image"
-			class="close-button"
-			mat-icon-button
-	>
-		<ng-icon name="matClose" size="32"></ng-icon>
-	</button>
-	
-	<div (click)="close()" class="image-wrapper">
-		<video *ngIf="isVideo(); else imageTemplate"
-			   [style.background]="data.backgroundColor || 'transparent'"
-			   autoplay
-			   class="fullscreen-image"
-			   controls
-			   loop
-			   playsinline>
-			<source [src]="data.src" type="video/webm">
-			Your browser does not support the video tag.
-		</video>
-		<ng-template #imageTemplate>
-			<img
-					[alt]="data.alt"
-					[src]="data.src"
-					[style.background]="data.backgroundColor || 'transparent'"
-					class="fullscreen-image"
-			/>
-		</ng-template>
-	</div>
-</div>
+  <button
+    (click)="close()"
+    aria-label="Close fullscreen image"
+    class="close-button"
+    mat-icon-button
+    >
+    <ng-icon name="matClose" size="32"></ng-icon>
+  </button>
+
+  <div (click)="close()" class="image-wrapper">
+    @if (isVideo()) {
+      <video
+        [style.background]="data.backgroundColor || 'transparent'"
+        autoplay
+        class="fullscreen-image"
+        controls
+        loop
+        playsinline>
+        <source [src]="data.src" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    } @else {
+      <img
+        [alt]="data.alt"
+        [src]="data.src"
+        [style.background]="data.backgroundColor || 'transparent'"
+        class="fullscreen-image"
+        />
+      }
+    </div>
+  </div>

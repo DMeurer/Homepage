@@ -1,25 +1,28 @@
-import {CommonModule} from "@angular/common";
-import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from "@angular/core";
+
+import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild, ChangeDetectionStrategy} from "@angular/core";
 import {NgIcon} from "@ng-icons/core";
 import {MathJaxService} from "../../../services/mathjax.service";
 
 @Component({
 	selector: "app-math-content",
 	standalone: true,
-	imports: [CommonModule, NgIcon],
+	imports: [NgIcon],
 	template: `
 		<div class="math-content-wrapper"
-			 (mouseenter)="onMouseEnter()"
-			 (mouseleave)="onMouseLeave()">
-			<div #mathContainer></div>
-			<button *ngIf="showCopyButton && enableCopy"
-					class="copy-button"
-					(click)="copyLatex()"
-					title="Copy LaTeX">
-				<ng-icon name="matContentCopy" size="16"></ng-icon>
-			</button>
+		  (mouseenter)="onMouseEnter()"
+		  (mouseleave)="onMouseLeave()">
+		  <div #mathContainer></div>
+		  @if (showCopyButton && enableCopy) {
+		    <button
+		      class="copy-button"
+		      (click)="copyLatex()"
+		      title="Copy LaTeX">
+		      <ng-icon name="matContentCopy" size="16"></ng-icon>
+		    </button>
+		  }
 		</div>
-	`,
+		`,
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrls: ["./math-content.component.scss"],
 })
 export class MathContentComponent implements AfterViewInit, OnChanges {

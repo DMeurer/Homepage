@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {CodeBlockComponent} from "../../shared/components/code-block/code-block.component";
 import {ChatWindowComponent} from "../../shared/components/chat-window/chat-window.component";
 
@@ -6,6 +6,7 @@ import {ChatWindowComponent} from "../../shared/components/chat-window/chat-wind
 	selector: "app-matrix-bot",
 	imports: [ChatWindowComponent, CodeBlockComponent],
 	templateUrl: "./matrix-bot.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./matrix-bot.component.scss",
 })
 export class MatrixBotComponent {

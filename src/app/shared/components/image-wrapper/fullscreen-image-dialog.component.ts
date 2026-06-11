@@ -1,5 +1,5 @@
-import {NgIf} from "@angular/common";
-import {Component, Inject} from "@angular/core";
+
+import {Component, Inject, ChangeDetectionStrategy} from "@angular/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
@@ -7,8 +7,9 @@ import {NgIcon} from "@ng-icons/core";
 
 @Component({
 	selector: "app-fullscreen-image-dialog",
-	imports: [MatIconModule, MatButtonModule, MatDialogModule, NgIcon, NgIf],
+	imports: [MatIconModule, MatButtonModule, MatDialogModule, NgIcon],
 	templateUrl: "./fullscreen-image-dialog.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./fullscreen-image-dialog.component.scss",
 })
 export class FullscreenImageDialog {

@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {MatAnchor} from "@angular/material/button";
 
 @Component({
@@ -7,6 +7,7 @@ import {MatAnchor} from "@angular/material/button";
 		MatAnchor,
 	],
 	templateUrl: "./qr-solver.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./qr-solver.component.scss",
 })
 export class QrSolverComponent {

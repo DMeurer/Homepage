@@ -1,32 +1,33 @@
 <div (click)="openFullscreen()" [style.background]="backgroundColor"
-	 [style.height]="height"
-	 [style.width]="width"
-	 class="image-container"
->
-	<video *ngIf="isVideo(); else imageTemplate"
-		   [style.height]="height"
-		   [style.object-fit]="objectFit"
-		   [style.width]="width"
-		   autoplay
-		   class="clickable-image"
-		   loop
-		   muted
-		   playsinline>
-		<source [src]="src" type="video/webm">
-		Your browser does not support the video tag.
-	</video>
-	<ng-template #imageTemplate>
-		<img
-				[alt]="alt"
-				[class]="imageClass"
-				[src]="src"
-				[style.height]="height"
-				[style.object-fit]="objectFit"
-				[style.width]="width"
-				class="clickable-image"
-		/>
-	</ng-template>
-	<div class="overlay">
-		<ng-icon name="matFullscreen" size="64"></ng-icon>
-	</div>
-</div>
+  [style.height]="height"
+  [style.width]="width"
+  class="image-container"
+  >
+  @if (isVideo()) {
+    <video
+      [style.height]="height"
+      [style.object-fit]="objectFit"
+      [style.width]="width"
+      autoplay
+      class="clickable-image"
+      loop
+      muted
+      playsinline>
+      <source [src]="src" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+  } @else {
+    <img
+      [alt]="alt"
+      [class]="imageClass"
+      [src]="src"
+      [style.height]="height"
+      [style.object-fit]="objectFit"
+      [style.width]="width"
+      class="clickable-image"
+      />
+    }
+    <div class="overlay">
+      <ng-icon name="matFullscreen" size="64"></ng-icon>
+    </div>
+  </div>

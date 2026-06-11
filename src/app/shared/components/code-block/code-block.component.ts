@@ -1,5 +1,5 @@
-import {CommonModule} from "@angular/common";
-import {Component, Input} from "@angular/core";
+
+import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 import {NgIcon} from "@ng-icons/core";
 import {Highlight} from "ngx-highlightjs";
 import {HighlightLineNumbers} from "ngx-highlightjs/line-numbers";
@@ -7,8 +7,9 @@ import {HighlightLineNumbers} from "ngx-highlightjs/line-numbers";
 @Component({
 	selector: "app-code-block",
 	standalone: true,
-	imports: [CommonModule, Highlight, HighlightLineNumbers, NgIcon],
+	imports: [Highlight, HighlightLineNumbers, NgIcon],
 	templateUrl: "./code-block.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrls: ["./code-block.component.scss"],
 })
 export class CodeBlockComponent {

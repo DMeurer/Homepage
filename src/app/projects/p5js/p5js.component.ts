@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {ProjectCardComponent} from "../../shared/components/project-card/project-card.component";
 import {PROJECTS_P5JS} from "../../shared/data/projects/projects";
 
@@ -8,6 +8,7 @@ import {PROJECTS_P5JS} from "../../shared/data/projects/projects";
 		ProjectCardComponent,
 	],
 	templateUrl: "./p5js.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./p5js.component.scss",
 })
 export class P5jsComponent {

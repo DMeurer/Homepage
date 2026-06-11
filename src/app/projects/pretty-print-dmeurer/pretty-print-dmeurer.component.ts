@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {RedirectComponent} from "../../shared/components/redirect/redirect.component";
 
 @Component({
@@ -7,6 +7,7 @@ import {RedirectComponent} from "../../shared/components/redirect/redirect.compo
 		RedirectComponent,
 	],
 	templateUrl: "./pretty-print-dmeurer.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./pretty-print-dmeurer.component.scss",
 })
 export class PrettyPrintDmeurerComponent {

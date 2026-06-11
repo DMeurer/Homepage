@@ -1,5 +1,5 @@
 import {NgTemplateOutlet} from "@angular/common";
-import {Component, OnDestroy} from "@angular/core";
+import {Component, OnDestroy, ChangeDetectionStrategy} from "@angular/core";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 
@@ -19,6 +19,7 @@ const SECTIONS_KEYS = Object.keys(SECTIONS);
 		NgTemplateOutlet,
 	],
 	templateUrl: "./navbar.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./navbar.component.scss",
 })
 

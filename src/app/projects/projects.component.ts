@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {ProjectCardComponent} from "../shared/components/project-card/project-card.component";
 import {PROJECTS, PROJECTS_SMALLER} from "../shared/data/projects/projects";
 
@@ -8,6 +8,7 @@ import {PROJECTS, PROJECTS_SMALLER} from "../shared/data/projects/projects";
 		ProjectCardComponent,
 	],
 	templateUrl: "./projects.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./projects.component.scss",
 })
 export class ProjectsComponent {

@@ -1,11 +1,12 @@
-import {CommonModule} from "@angular/common";
-import {Component} from "@angular/core";
+
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 
 @Component({
 	selector: "app-calculator",
 	standalone: true,
-	imports: [CommonModule],
+	imports: [],
 	templateUrl: "./calculator.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrls: ["./calculator.component.scss"],
 })
 export class CalculatorComponent {

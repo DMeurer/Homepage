@@ -1,11 +1,12 @@
-import {CommonModule} from "@angular/common";
-import {Component, Input, OnDestroy, OnInit} from "@angular/core";
+
+import {Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy} from "@angular/core";
 
 @Component({
 	selector: "app-redirect",
 	standalone: true,
-	imports: [CommonModule],
+	imports: [],
 	templateUrl: "./redirect.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrls: ["./redirect.component.scss"],
 })
 export class RedirectComponent implements OnInit, OnDestroy {

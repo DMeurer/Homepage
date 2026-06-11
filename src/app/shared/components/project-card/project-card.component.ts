@@ -1,5 +1,5 @@
 import {formatDate} from "@angular/common";
-import {Component, Inject, Input, LOCALE_ID, OnInit} from "@angular/core";
+import {Component, Inject, Input, LOCALE_ID, OnInit, ChangeDetectionStrategy} from "@angular/core";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatChip, MatChipSet} from "@angular/material/chips";
 import {RouterLink} from "@angular/router";
@@ -21,6 +21,7 @@ import {Project} from "../../data/projects/datatypes";
 		"project",
 	],
 	templateUrl: "./project-card.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./project-card.component.scss",
 })
 export class ProjectCardComponent implements OnInit {

@@ -1,5 +1,5 @@
-import {CommonModule} from "@angular/common";
-import {Component, Input} from "@angular/core";
+
+import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 
 export interface ChatWindowMessage {
 	sender: string;
@@ -9,8 +9,9 @@ export interface ChatWindowMessage {
 
 @Component({
 	selector: "app-chat-window",
-	imports: [CommonModule],
+	imports: [],
 	templateUrl: "./chat-window.component.html",
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./chat-window.component.scss",
 })
 export class ChatWindowComponent {
