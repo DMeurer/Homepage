@@ -1,15 +1,23 @@
 import {Component, ChangeDetectionStrategy} from "@angular/core";
 import {CodeBlockComponent} from "../../shared/components/code-block/code-block.component";
 import {ChatWindowComponent} from "../../shared/components/chat-window/chat-window.component";
+import {ProjectLinksComponent} from "../../shared/components/project-links/project-links.component";
+import {ProjectLink} from "../../shared/data/projects/datatypes";
 
 @Component({
 	selector: "app-matrix-bot",
-	imports: [ChatWindowComponent, CodeBlockComponent],
+	imports: [ChatWindowComponent, CodeBlockComponent, ProjectLinksComponent],
 	templateUrl: "./matrix-bot.component.html",
 	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: "./matrix-bot.component.scss",
 })
 export class MatrixBotComponent {
+	
+	protected readonly links: ProjectLink[] = [
+		{label: "Start Chatting", url: "https://matrix.to/#/@melo:dmeurer.dev", icon: "matOpenInNew"},
+		{label: "Repository", url: "https://github.com/DMeurer/Matrix-Bot", icon: "matCode"},
+	];
+	
 	protected readonly alertMessages = [
 		{
 			sender: "User",
