@@ -6,6 +6,7 @@ import {LandscapeGenComponent} from "./landscape-gen/landscape-gen.component";
 import {MatrixBotComponent} from "./matrix-bot/matrix-bot.component";
 import {PrettyPrintDmeurerComponent} from "./pretty-print-dmeurer/pretty-print-dmeurer.component";
 import {ProjectsComponent} from "./projects.component";
+import {SdcTestingToolboxComponent} from "./sdc-testing-toolbox/sdc-testing-toolbox.component";
 import {SolarCalculatorComponent} from "./solar-calculator/solar-calculator.component";
 import {TelegramBotComponent} from "./telegram-bot/telegram-bot.component";
 import {WebScraperComponent} from "./web-scraper/web-scraper.component";
@@ -55,5 +56,9 @@ export const routes: Routes = [
 	{
 		path: "landscape-generator",
 		component: LandscapeGenComponent,
+	},
+	{
+		path: "sdc-testing-toolbox",
+		component: SdcTestingToolboxComponent,
 	},
 ];

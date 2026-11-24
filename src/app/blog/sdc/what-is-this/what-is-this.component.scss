@@ -1,0 +1,62 @@
+:host {
+	display: block;
+}
+
+abbr[title] {
+	text-decoration: underline dotted;
+	text-underline-offset: 2px;
+	cursor: help;
+}
+
+.table-wrap {
+	overflow-x: auto;
+	margin: 1.5rem 0;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95rem;
+}
+
+th,
+td {
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	padding: 0.5rem 0.75rem;
+	text-align: left;
+	vertical-align: top;
+}
+
+th {
+	background: rgba(255, 255, 255, 0.04);
+	font-weight: 600;
+}
+
+.fn-ref {
+	font-size: 0.7em;
+	line-height: 0;
+	white-space: nowrap;
+}
+
+.fn-ref a {
+	text-decoration: none;
+}
+
+.footnotes {
+	margin-top: 3rem;
+	font-size: 0.9rem;
+	opacity: 0.85;
+
+	ol {
+		padding-left: 1.25rem;
+	}
+
+	li {
+		margin-bottom: 0.5rem;
+	}
+
+	.fn-back {
+		margin-left: 0.35rem;
+		text-decoration: none;
+	}
+}

@@ -4,6 +4,31 @@ import {Project, ProjectChipType} from "../projects/datatypes";
 // Routes have to be edited in src/app/projects/projects.routes.ts
 export const BLOG_POSTS: Project[] = [
 	{
+		tag: "sdc/what-is-this",
+		name: "SDC — What is this?",
+		description: "A field guide to IEEE 11073 SDC: what problem it solves for networked medical devices, and how BICEPS, MDPWS and discovery fit together.",
+		image: "/blog/sdc/what-is-this/cover.svg",
+		date: new Date("2026-08-27"),
+		chips: [
+			{
+				name: "Medical Devices",
+				type: ProjectChipType.USE_CASE,
+			},
+			{
+				name: "SDC",
+				type: ProjectChipType.INTERFACE,
+			},
+			{
+				name: "IEEE 11073",
+				type: ProjectChipType.TOOL,
+			},
+			{
+				name: "BICEPS",
+				type: ProjectChipType.TOOL,
+			},
+		],
+	},
+	{
 		tag: "matrix-server",
 		name: "Self-hosting a Matrix server",
 		description: "Building a self-hosted, bridged Matrix server as a Beeper replacement I actually own.",

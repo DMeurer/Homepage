@@ -2,6 +2,7 @@ import {Routes} from "@angular/router";
 import {BlogComponent} from "./blog.component";
 import {MatrixServerComponent} from "./matrix-server/matrix-server.component";
 import {R2d2TwoWheeledMovementComponent} from "./r2d2/r2d2-two-wheeled-movement/r2d2-two-wheeled-movement.component";
+import {SdcWhatIsThisComponent} from "./sdc/what-is-this/what-is-this.component";
 
 export const routes: Routes = [
 	{
@@ -16,5 +17,9 @@ export const routes: Routes = [
 	{
 		path: "matrix-server",
 		component: MatrixServerComponent,
+	},
+	{
+		path: "sdc/what-is-this",
+		component: SdcWhatIsThisComponent,
 	},
 ];

@@ -4,6 +4,34 @@ import {Project, ProjectChipType} from "./datatypes";
 // Routes have to be edited in src/app/projects/projects.routes.ts
 export const PROJECTS: Project[] = [
 	{
+		tag: "sdc-testing-toolbox",
+		name: "SDC Testing Toolbox",
+		description: "A desktop tool for building IEEE 11073 SDC medical-device models by clicking, publishing them on the network, and controlling one instance from another. A learning tool, not a medical device.",
+		image: "/projects/sdc-testing-toolbox/cover.svg",
+		chips: [
+			{
+				name: "Intermediate",
+				type: ProjectChipType.COMPLEXITY,
+			},
+			{
+				name: "Python",
+				type: ProjectChipType.LANGUAGE,
+			},
+			{
+				name: "PySide6",
+				type: ProjectChipType.TOOL,
+			},
+			{
+				name: "SDC / IEEE 11073",
+				type: ProjectChipType.USE_CASE,
+			},
+			{
+				name: "Desktop App",
+				type: ProjectChipType.INTERFACE,
+			},
+		],
+	},
+	{
 		tag: "solar-calculator",
 		name: "Solar Dashboard",
 		description: "A browser-based solar energy calculator. Model panels, household consumption and a battery across a day or week, and see how much of your own power you could cover. Everything runs client-side, no backend required.",

@@ -1,0 +1,113 @@
+<h1>SDC Testing Toolbox</h1>
+
+<app-project-links [links]="links"></app-project-links>
+
+<p>
+	The SDC Testing Toolbox is a desktop app for playing around with <strong>IEEE 11073 SDC</strong>, the standard that lets medical devices talk to each other.
+	You build a device by clicking, publish it on the network, and then control it from a second instance of the app. Or from any other SDC device.<br>
+	If you have no idea what SDC is, my article <a [routerLink]="['/blog/sdc/what-is-this']">SDC &mdash; What is this?</a> might be a good starting point. This page assumes you roughly know.
+</p>
+<p>
+	I built it because reading the standard did not get me very far. SDC has a lot of concepts that only make sense once when you understand the basics.
+	But I cant read all of the standards at once, so I built myself a small tool to make myself understand.
+</p>
+<p>
+	To be very clear: this is a learning and testing tool, <strong>not a medical device</strong>. Nothing about it is meant for clinical use.<br>
+	And a small additional note: I am actively changing this thing over and over to fit my needs. Screenshots will very likely be out of date.
+</p>
+
+<h2>Start it twice</h2>
+<p>
+	Every instance is two things at once. The <strong>My device</strong> side is the device you publish, the <strong>Network</strong> side is everything else.
+	So the quickest demo is to start it twice and let the two find each other.
+</p>
+<app-image-wrapper alt="Two toolbox instances side by side, each with a My device and a Network side; each Network side is connected to the other instance's My device" height="auto" src="/projects/sdc-testing-toolbox/start-it-twice.svg" width="100%"></app-image-wrapper>
+<p>
+	Here you can see two instances of the toolbox, on the left a publisher simulating a infusion pump, and in the right a toolbox subscribing to it:
+</p>
+<app-image-wrapper alt="The toolbox in split view: the own patient monitor on the left, a connected insufflator on the right" height="auto" src="/projects/sdc-testing-toolbox/split-view.png" width="100%"></app-image-wrapper>
+<p>
+	Both sides are live. Move a slider on the publisher and it moves in the subscriber a moment later. Move it in the subscriber and the provider gets a request to change it, which it can accept or refuse.
+</p>
+
+<h2>My device</h2>
+<p>
+	This is where you build the device. <em>New data source&hellip;</em> creates a value: a number, a text, a choice from a fixed list, a waveform or a distribution.
+	Those are pretty much the only value types SDC knows, which sounds limiting but means every other device knows how to show them.
+	Numbers can get a range and a unit, and numbers, texts and choices can be marked as remote controllable.
+</p>
+<app-image-wrapper alt="The My device tab of an insufflator with nine data source cards and two action buttons" height="auto" src="/projects/sdc-testing-toolbox/my-device.png" width="100%"></app-image-wrapper>
+<p>
+	Every value gets a card with the control that fits it: a slider when it has a minimum and a maximum, a dropdown for a choice, a plot for waveforms.
+	Waveforms are generated on the fly, because a waveform with nothing behind it just looks broken. If you prefer tables, <em>F9</em> switches every card into a table row.
+</p>
+<p>
+	Starting from nothing every time gets old fast, so there are presets. Nine devices you would find in an operating room ship with the app: a patient monitor, an insufflator, an HF generator, an infusion pump, a ventilator, an operating table and some more.
+	Each one is a normal SDC device description (an MDIB file) with a few extra notes for the toolbox, so you can also load the MDIB of a real device and tinker with it.
+	<em>File &rarr; Export config</em> saves your own device the same way.
+</p>
+
+<h2>Network</h2>
+<p>
+	The other half. <em>Scan</em> finds every SDC device on the network, <em>Connect</em> loads one. Each connection gets its own tab, so you can watch several devices at once.
+	The values show up as the same cards, and the ones the device lets you change are editable.
+</p>
+<app-image-wrapper alt="The Network tab connected to the insufflator, with the overpressure alarm active" height="auto" src="/projects/sdc-testing-toolbox/network.png" width="100%"></app-image-wrapper>
+<p>
+	The interesting part is what happens when the device says no. Send a target pressure of 500 when only 0 to 30 is allowed, and the insufflator refuses it and tells you why.
+	Switch off remote control on the device side, and the same write gets refused even though the value would be fine.
+	The toolbox does not decide this for the other device, it just shows what the device answered.
+</p>
+<p>
+	The Network side does not assume the other end is another toolbox either. It works with any SDC device, shows parts it does not understand instead of dropping them, and copes with devices that leave out units or descriptions.
+	So it doubles as a plain SDC browser for somebody else's implementation.
+</p>
+
+<h2>Alarms</h2>
+<p>
+	Alarms are where SDC gets a little philosophical. An alarm is split into the <em>condition</em> ("the pressure is too high") and the <em>signals</em> that announce it (a light, a sound, a vibration).
+	In the screenshot above the overpressure alarm is active, and you can see both of its signals, visual and audible, light up in the Signals column.
+</p>
+<p>
+	Give an alarm limits and it watches its value by itself. Push the value past the limit, from either side, and the alarm goes off on both. <em>Acknowledge</em> silences the signals but leaves the condition active, because the pressure is still too high. That is exactly the difference the split is there for.
+</p>
+
+<h2>Actions</h2>
+<p>
+	Not everything a device does is a value. <em>Reset the gas counter</em>, <em>vent to atmosphere</em>, <em>home the axes</em>: there is nothing to type, you just press a button.
+	These show up as a row of buttons at the bottom, on both sides. In the toolbox an action sets a few values, so you can actually see that it did something. Press <em>Vent to atmosphere</em> from the monitor and watch flow, pressure and mode on the insufflator change at once.
+</p>
+
+<h2>Looking under the hood</h2>
+<p>
+	For the curious there is the <strong>MDIB structure</strong> section, the device's full description as a tree with all its handles, the IDs SDC uses for everything.
+	Together with the table view it is the fastest way to see what a device really publishes.
+</p>
+<app-image-wrapper alt="The MDIB structure tree and the metric table of the connected insufflator" height="auto" src="/projects/sdc-testing-toolbox/structure-table.png" width="100%"></app-image-wrapper>
+<p>
+	And when you want to know what just happened, the <strong>Activity log</strong> in the status bar lists everything: values a connected device changed, actions it ran, alarms that went off.
+</p>
+<app-image-wrapper alt="The activity log listing remote changes, an action and the overpressure alarm" height="auto" src="/projects/sdc-testing-toolbox/activity-log.png" width="100%"></app-image-wrapper>
+
+<h2>Trying it yourself</h2>
+<p>
+	It is written in Python with PySide6 and runs on Windows and Linux. From the source it is these few lines (on Linux swap the backslashes):
+</p>
+<app-code-block [code]="startExample" language="powershell"></app-code-block>
+<p>
+	Without any arguments it asks how to start instead. One thing worth knowing: SDC discovery binds to a single network address, and a normal laptop has eight or nine of them (VPN, Hyper-V, Bluetooth, ...).
+	If two instances on different machines cannot see each other, the address is the first thing to check. The start dialog lists them with the adapter name for exactly that reason.
+</p>
+<p>
+	By default everything runs over plain HTTP, so keep it on a network you trust. TLS with certificates is there if you need it.
+</p>
+
+<h2>How it works</h2>
+<p>
+	How the toolbox builds a device while it is running, how it talks to other devices and what happens under the hood is all in the
+	<a href="https://sdc.d-meurer.com/how-it-works/" target="_blank" rel="noopener">documentation</a>.
+</p>
+
+<div class="footer-section">
+	<p>Cheers!</p>
+</div>

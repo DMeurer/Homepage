@@ -1,0 +1,374 @@
+<h1 class="page-header">SDC — What is this?</h1>
+
+<p>
+	Operating rooms are full of devices that ignore each other. The
+	<abbr title="An insufflator pumps CO₂ into the abdomen during minimally invasive surgery, to create room to work in.">insufflator</abbr>
+	doesn't know the
+	<abbr title="An HF generator supplies high-frequency current for cutting tissue and sealing vessels.">HF generator</abbr>
+	exists. The pump can't tell the monitor it's about to run dry. Every one of them has a screen, a beeper and its own idea of
+	what an alarm looks like, and none of that reaches anything else in the room.
+</p>
+
+<p>
+	That isn't for lack of trying. It's that "connecting two medical devices" is a much harder problem than it looks, and until
+	recently there was no standard answer to it.
+</p>
+
+<p>
+	The IEEE 11073 <abbr title="Service-oriented Device Connectivity — the part of the ISO/IEEE 11073 family concerned with networking medical devices in acute care settings.">SDC</abbr> Standard
+	wants to be an Answer to that that Problem. This post is what I wish I'd read when I started.
+</p>
+
+<h2>The problem SDC actually solves</h2>
+
+<p>
+	The obvious framing is "medical devices should talk to each other", which makes it sound like a networking problem. It isn't.
+	The networking part is relatively easy, just connected to some organisation problems when it comes to actually using this.
+</p>
+
+<p>The hard parts are these:</p>
+
+<p>
+	<strong>Nobody agrees what a value means.</strong> A device sends <code>42</code> for example.<br>
+	Forty-two what? Millilitres per minute? Percent? Pressure? We need a unit.<br>
+	Where did you measure? What is the meaning of the measurement. A temperature has very different interpretations depending on where you measured it.<br>
+	What precision is it measured to? When was it measured?
+</p>
+
+<p>
+	<strong>Devices are built by companies who have never met.</strong><br> A point-to-point integration between two vendors works, but it works only once.
+	I am not talking about self-destruct, I am stating that in the past, two devices communicating required a custom integration and they had to be built with the communication partner in mind.<br>
+	But its not realistic to have a company write integrations for a ton of products.
+</p>
+
+<p>
+	<strong>Someone has to be responsible.</strong> This is the one that makes medical different from many other domains.<br>
+	Someone has to be responsible. Who is responsible if a device controls another in a wrong way? Who is responsible if communication errors cause a device to misbehave?<br>
+	In the medical field a error can have catastrophic consequences, that do not have a undo button.<br>
+	Conformity assessment assumes a single manufacturer who is responsible for the whole product.
+	Cross-vendor networking breaks that assumption, and it is a genuinely unsolved problem rather than an oversight.<sup class="fn-ref" id="fnref-1"><a href="#fn-1">1</a></sup>
+</p>
+
+<p>
+	SDC attacks the first two, and the last one a bit. It gives devices a shared vocabulary for describing themselves, and a shared way of finding each
+	other and exchanging data. The third is a regulatory question that a protocol can't fix on its own, but the protocol defines how trust works.
+</p>
+
+<h2>How it works</h2>
+
+<h3>The Basics - starting at the Tree</h3>
+
+<p>
+	An SDC device describes itself in an
+	<abbr title="Medical Device Information Base — a device's complete self-description: its structure (MdDescription) and its current values (MdState).">MDIB</abbr>
+	— the Medical Device Information Base. It represents the entire device at a point in time, and it has two halves:
+</p>
+
+<ul>
+	<li><strong>MdDescription</strong> — the structure. <em>What this device is</em>. Which values it has, what units they're in, what may be changed.</li>
+	<li><strong>MdState</strong> — the contents. What those <em>values</em> are right now.</li>
+</ul>
+
+<p>The structure is a containment tree, and the levels have fixed meanings:<sup class="fn-ref" id="fnref-2"><a href="#fn-2">2</a></sup></p>
+
+<app-image-wrapper alt="The containment tree: an MDS (the device itself) holds VMDs (functional units), which hold channels (groups of related values), which hold metrics (one actual value each)" height="auto" src="/blog/sdc/what-is-this/containment-tree.svg" width="100%"></app-image-wrapper>
+
+<p>
+	<abbr title="Medical Device System — the top level of the containment tree, representing the device as a whole.">MDS</abbr>
+	is the whole device. A
+	<abbr title="Virtual Medical Device — a functional unit within an MDS.">VMD</abbr>
+	is a functional module — a ventilator might have a gas delivery VMD and a monitoring VMD. Channels group things that belong
+	together, and metrics are the leaves where actual values live.
+</p>
+
+<p>
+	The point of the fixed hierarchy is that a consumer who has never seen your device can still walk it and find things.<br>
+	Additionally the standard committee can define a standard set of VMDs and what channels and metrics they should have.
+	This way, two similar devices from different vendors can look the same to a consumer. That it what enables the interoperability that SDC is aiming for.<sup class="fn-ref" id="fnref-3"><a href="#fn-3">3</a></sup>
+</p>
+
+<h3>There are only five datatypes</h3>
+
+<p>
+	Might be a surprise, but the standard currently only requires 5 datatypes.
+	The <abbr title="Basic Integrated Clinical Environment Protocol Specification — the information and service model defined in IEEE 11073-10207.">BICEPS</abbr> also
+	doesn't let you invent value types.<sup class="fn-ref" id="fnref-4"><a href="#fn-4">4</a></sup>
+</p>
+
+<div class="table-wrap">
+	<table>
+		<thead>
+		<tr>
+			<th>Type</th>
+			<th>What it holds</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><code>NumericMetric</code></td>
+			<td>a number, with a unit and a resolution</td>
+		</tr>
+		<tr>
+			<td><code>StringMetric</code></td>
+			<td>free text</td>
+		</tr>
+		<tr>
+			<td><code>EnumStringMetric</code></td>
+			<td>one of a fixed list of allowed texts / values</td>
+		</tr>
+		<tr>
+			<td><code>RealTimeSampleArrayMetric</code></td>
+			<td>a waveform — a stream of samples</td>
+		</tr>
+		<tr>
+			<td><code>DistributionSampleArrayMetric</code></td>
+			<td>values spread over a range, like a frequency spectrum</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+<p>
+	There's no floating point number. Floating point arithmetic is a nogo anyways. Numbers are exact decimals instead, so 12.5 is no problem, it just isn't stored as a float.
+	On top of that the NumericMetric supports a unit and a resolution: the smallest step the device can tell apart, for example 0.1.<br>
+	There's no boolean. But a Enum with only two possible values really is the same anyway.<br>
+	And there's no binary blob — SDC deliberately doesn't carry audio or video.<sup class="fn-ref" id="fnref-5"><a href="#fn-5">5</a></sup>
+	If you want a camera feed, it goes over its own transport and SDC only carries the URL to the stream.
+</p>
+
+<p>
+	That constraint sounds annoying but mostly isn't. It means every consumer knows how to read every value it will ever encounter.
+	Allowing arbitrary types would break this.
+</p>
+
+<h3>Remote control is a separate object</h3>
+
+<p>
+	Here's the part I got wrong at first. I assumed a settable value would have a flag on it — something like
+	<code>writable: true</code>.
+</p>
+
+<p>
+	It doesn't work like that. If a value can be changed from outside, there's a <strong>separate descriptor</strong> for the operation, living in the device's
+	<abbr title="Service Control Object — the part of the tree holding the operations that let other participants change something on this device.">SCO</abbr>,
+	and it points at the metric it targets:
+</p>
+
+<app-image-wrapper alt="Two separate branches of the MDS: the SCO holds a SetValueOperation, the VMD and channel hold the metric, and the operation points at the metric through its OperationTarget, the handle of the metric" height="auto" src="/blog/sdc/what-is-this/sco-operation-target.svg" width="100%"></app-image-wrapper>
+
+<p>
+	So it's just like a <code>setZoomLevel()</code> method in code.<br>
+	The Metric might for example have a technical minimum and maximum, but the SCO Object can set its own allowed values or limits to limit what external control can do.
+</p>
+
+<p>
+	This might feel like overkill but it buys you a lot of freedom.<br>
+	Each operation carries its own access level and its own permitted range, and the whole thing can be switched off at runtime without changing the device's description.
+	Two operations can target the same metric with different permissions.<sup class="fn-ref" id="fnref-6"><a href="#fn-6">6</a></sup>
+</p>
+
+<p>
+	Remote control operations aren't fire-and-forget. You send a request, and the device reports back through a sequence of states —
+	waiting, started, then finished or failed. The device is also allowed to say no and refuse the remote control.<sup class="fn-ref" id="fnref-7"><a href="#fn-7">7</a></sup>
+</p>
+
+<h3>Alarms - Why are they separate?</h3>
+
+<p>
+	Alert are states that are either active or not. Sounds like a boolean.<br>
+	But alerts are such a common event that it makes sense to have a system just for this with very much flexibility around them.
+</p>
+
+<p>
+	Alerts for example have specified <em>signals</em>. Alarms are typically perceived in three ways: through visuals, audio or haptics. And a <em>other</em> type just in case.<br>
+	They can also be latched. Meaning if they only fire for a split second they are not immediately off again, but stay raised until a acknowledgement clears it.<sup class="fn-ref" id="fnref-8"><a href="#fn-8">8</a></sup>
+</p>
+
+<h3>Finding each other</h3>
+
+<p>
+	There's no registry and no broker. Devices announce themselves using multicast when they go online, and consumers can send a probe to
+	ask who's out there. A device that's leaving says so.<br>
+	A discovery probes and hello messages carrie the device's endpoint and some other information. A consumer can then request the MDIB to look at the device in its full state.<sup class="fn-ref" id="fnref-9"><a href="#fn-9">9</a></sup>
+</p>
+
+<h3>Security and Trust</h3>
+
+<p>
+	I believe its self explanatory <em>why</em> this is important, so lets skip to how and the problems with it.<br>
+	The entire communication after the discovery is using
+	<abbr title="Transport Layer Security — the encryption behind HTTPS. Both sides prove who they are with certificates, and everything sent between them is encrypted.">TLS</abbr>. But same certificates are also used for trust.<sup class="fn-ref" id="fnref-10"><a href="#fn-10">10</a></sup><br>
+	Basically a communication partner will exchange certificates for encrypted traffic anyways.
+	Based on the Certificate a device can then decide if it want to trust the certificate or not.
+	Additionally a entire
+	<abbr title="Certificate Authority — an organisation or system that signs certificates, vouching that they belong to who they claim.">CA</abbr>
+	can be marked trusted, so every certificate signed by the CA is auto-trusted.
+</p>
+
+<app-image-wrapper alt="Network diagram: two SDC devices and a local CA sit in the hospital network behind a router; the router connects to the internet, where a public CA sits" height="auto" src="/blog/sdc/what-is-this/trust-network.svg" width="100%"></app-image-wrapper>
+
+<h4>But who do you trust?</h4>
+
+<p>
+	This may seem simple, but this is the main legal concern. The companies could set the trusted CAs fixed on their own CA and some other companies that pay enough.
+	But now the producer has to make sure all devices there actually can be trusted.
+	This is probably a legal risk no one is willing to take, so this decision will likely land with the hospital.
+</p>
+
+<h4>The problem with this system</h4>
+
+<p>
+	It really is a great solution in theory. You have encrypted communication, and fine-grained trust if you want it.<br>
+	BUT<br>
+	How do certificates work again? - Ah yes, they are validated against a Certificate Authority (CA) and a Certificate Revocation List (CRL).<br>
+	So for this to work you need one. Or multiple ones.<br>
+	This requires internet - something not many medical devices have access to. And for a reason.
+	The more you expose devices to the internet, the more attack vectors you have. And it is used in a pretty critical area.<br>
+	A solution for this: Well just make it local.
+	Not a bad Idea, but now you not only have to maintain the devices and the devices network, but also a full on CA and CRL and every single Certificate for every device.
+</p>
+
+<p>So either way, the Hospital IT department will not like it.</p>
+
+<h2>Seeing it work</h2>
+
+<p>
+	Reading about a containment tree only gets you so far. I built a small desktop tool — the
+	<a [routerLink]="['/projects/sdc-testing-toolbox']">SDC Testing Toolbox</a> — mostly so I could poke at this stuff and watch
+	what happened.<br>
+	(Be aware this is a testing tool and I had much help from various LLMs. Its not intended for anything other than testing stuff.)
+</p>
+
+<h3>How to use it</h3>
+
+<p>
+	You start it twice. Each instance publishes a device and can be a consumer for multiple others.<br>
+	There are multiple presets to choose from if you want a ready to go starting point. You can also toss your own MDIB file in.<br>
+	If you dont have a MDIB at hand but know hat a device should look like, you can also start the tool without a template and add a nuch of datasources, alers and actions.
+	It features a export to MDIB, either a clean one or one with toolbox metadata.
+	The toolbox simplifies a lot, for example, there is only one "default channel". These are some shortcuts I took, to keep the tool simple and at least a bit less overwhelming for beginners.
+</p>
+
+<h2>What SDC is not</h2>
+
+<p>Worth being clear, because the marketing isn't always:</p>
+
+<p>
+	<strong>It is not real-time.</strong><br>
+	The datatype <code>RealTimeSampleArrayMetric</code> and the <code>validity</code> atribute of a metric suggest this, but it is not a real-time protocol.<sup class="fn-ref" id="fnref-11"><a href="#fn-11">11</a></sup>
+</p>
+
+<p>
+	<strong>It is not plug-and-play <em>yet</em></strong><br>
+	Two devices can discover each other and exchange a well-formed MDIB, but that is about it at the moment.
+	The device specializations are not nearly completed (at the time of writing, end of 2026), and only half of the key purposes are published.<sup class="fn-ref" id="fnref-12"><a href="#fn-12">12</a></sup>
+	Pretty bad when you consider the research started in 2005 and the Standard of the family was published in 2016.
+</p>
+
+<p>
+	None of that makes it uninteresting. It's one of the only attempts to standardize at this scale, and it can work if enough companies start using it.
+</p>
+
+<h2>Where to look next</h2>
+
+<p>
+	The standards themselves are paywalled, which is a shame. But
+	<a href="https://ornet.org/en" target="_blank" rel="noopener">OR.NET</a> publishes a good deal openly, there are open source
+	implementations to read, and the model is legible enough that an afternoon with a running device teaches more than a week of
+	specification.
+</p>
+
+<p>
+	If you want to try it, the <a [routerLink]="['/projects/sdc-testing-toolbox']">SDC Testing Toolbox</a> is a couple of clicks
+	away from a device on your network.
+</p>
+
+<section class="footnotes">
+	<h2>Notes and references</h2>
+	<ol>
+		<li id="fn-1">
+			Janß et al. (2018): <em>Extended device profiles and testing procedures for the approval process of integrated medical
+			devices using the IEEE 11073 communication standard.</em> Biomedizinische Technik 63(1), 95–103.
+			<a href="https://doi.org/10.1515/bmt-2017-0055" target="_blank" rel="noopener">doi:10.1515/bmt-2017-0055</a>.
+			Approval assumes one manufacturer solely responsible for the product; networking devices of different manufacturers
+			"raises juridical questions regarding the approval process" (p. 96).
+			<a class="fn-back" href="#fnref-1">↩</a>
+		</li>
+		<li id="fn-2">
+			ISO/IEEE 11073-10207:2017, <em>Domain Information and Service Model for Service-Oriented Point-of-Care Medical Device
+			Communication</em> (BICEPS). An open summary is in Kasparick et al. (2018), see note 5, section V.B: the MDIB holds the
+			MdDescription and the MdState, and the description is "a tree hierarchy with a height of four" with the metrics as leaves.
+			<a class="fn-back" href="#fnref-2">↩</a>
+		</li>
+		<li id="fn-3">
+			These are the device specialisations, run as IEEE projects: the module specifications
+			<a href="https://sagroups.ieee.org/11073/pocd" target="_blank" rel="noopener">IEEE P11073-10720</a> and the specialisations for
+			HF surgery, endoscopic camera, light source, insufflator and suction/irrigation pumps,
+			<a href="https://standards.ieee.org/ieee/11073-10724/7545" target="_blank" rel="noopener">IEEE P11073-10721 to -10725</a>.
+			<a class="fn-back" href="#fnref-3">↩</a>
+		</li>
+		<li id="fn-4">
+			The participant model schema of ISO/IEEE 11073-10207:2017 (<code>BICEPS_ParticipantModel.xsd</code>, readable in the open source
+			<a href="https://github.com/Draegerwerk/sdc11073" target="_blank" rel="noopener">sdc11073</a> library) defines exactly these five
+			metric descriptors. A numeric value is an <code>xsd:decimal</code>, and its precision is the descriptor's
+			<code>Resolution</code>, "the minimum determinable difference between two determined values".
+			<a class="fn-back" href="#fnref-4">↩</a>
+		</li>
+		<li id="fn-5">
+			Kasparick et al. (2018): <em>OR.NET: a service-oriented architecture for safe and dynamic medical device
+			interoperability.</em> Biomedizinische Technik 63(1), 11–30. doi:10.1515/bmt-2017-0020.
+			<a href="https://www.imd.uni-rostock.de/storages/uni-rostock/Alle_IEF/IMD/veroeff/2018/2018_Kasparick_OR.NET_A_Service-Oriented_Architecture_for_Safe_and_Dynamic_Medical_Device_Interoperability.pdf" target="_blank" rel="noopener">Pre-print</a>,
+			p. 7: "The transmission of audio or video streams via MDPWS is not intended."
+			<a class="fn-back" href="#fnref-5">↩</a>
+		</li>
+		<li id="fn-6">
+			ISO/IEEE 11073-10207:2017, participant model schema (see note 4): every operation descriptor has an <code>AccessLevel</code>
+			("a user group to whom access to the operation is granted"), an operation's state carries its <code>OperatingMode</code>, and
+			the states of set operations carry their own <code>AllowedRange</code> (numbers) or <code>AllowedValues</code> (texts).
+			<a class="fn-back" href="#fnref-6">↩</a>
+		</li>
+		<li id="fn-7">
+			ISO/IEEE 11073-10207:2017, message model schema (<code>BICEPS_MessageModel.xsd</code>): the <code>InvocationState</code> of a
+			request is one of Wait, Start, Fin, FinMod, Fail, Cnclld, CnclldMan or Unspec.
+			<a class="fn-back" href="#fnref-7">↩</a>
+		</li>
+		<li id="fn-8">
+			ISO/IEEE 11073-10207:2017, participant model schema (see note 4): an alert signal's manifestation is Aud, Vis, Tan
+			(tangible) or Oth, and a signal "is latching if it outlives its triggering ALERT CONDITION until it is stopped by
+			deliberate action".
+			<a class="fn-back" href="#fnref-8">↩</a>
+		</li>
+		<li id="fn-9">
+			Discovery is WS-Discovery from the Devices Profile for Web Services (DPWS), which MDPWS (ISO/IEEE 11073-20702) builds on:
+			providers announce themselves and consumers probe for them. Kasparick et al. (2018), see note 5, p. 7, and the
+			<a href="https://wiki.ihe.net/uploads/d/d9/02_IEEE_11073-20702-2016_SDC_MDPWS_Overview.pdf" target="_blank" rel="noopener">MDPWS overview slides</a>
+			(IHE, revision 2, 2019), slide 11.
+			<a class="fn-back" href="#fnref-9">↩</a>
+		</li>
+		<li id="fn-10">
+			MDPWS overview slides (see note 9), slide 18: TCP-based exchanges are secured with HTTPS, while UDP-based exchanges, that is
+			discovery, are "not supposed to be encrypted" and may only be signed against tampering.
+			<a class="fn-back" href="#fnref-10">↩</a>
+		</li>
+		<li id="fn-11">
+			Pfeiffer et al. (2018): <em>OR.NET RT: how service-oriented medical device architecture meets real-time
+			communication.</em> Biomedizinische Technik 63(1), 81–93.
+			<a href="https://doi.org/10.1515/bmt-2017-0016" target="_blank" rel="noopener">doi:10.1515/bmt-2017-0016</a>.
+			Hard real-time traffic goes over a separate real-time network next to SDC.
+			<a class="fn-back" href="#fnref-11">↩</a>
+		</li>
+		<li id="fn-12">
+			Of the key purpose standards, <a href="https://standards.ieee.org/ieee/11073-10700/7537/" target="_blank" rel="noopener">IEEE 11073-10700-2022</a>
+			(base requirements) and <a href="https://standards.ieee.org/ieee/11073-10701/7538" target="_blank" rel="noopener">IEEE 11073-10701-2022</a>
+			(metric provisioning) were published in 2023; <a href="https://standards.ieee.org/ieee/11073-10702/7539" target="_blank" rel="noopener">10702</a>
+			(alerts) and 10703 (external control) are still open projects, as are the device specialisations (note 3).
+			The core standards are IEEE 11073-20702-2016, IEEE 11073-10207-2017 and
+			<a href="https://standards.ieee.org/ieee/11073-20701/6059/" target="_blank" rel="noopener">IEEE 11073-20701-2018</a>, the last one published in January 2019.
+			<a class="fn-back" href="#fnref-12">↩</a>
+		</li>
+	</ol>
+</section>
+
+<div class="footer-section">
+	<p>Cheers!</p>
+</div>
