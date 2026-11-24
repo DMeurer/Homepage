@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1200 1000"
+   role="img"
+   aria-labelledby="title desc"
+   version="1.1"
+   id="svg21"
+   sodipodi:docname="cover.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview21"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.80115198"
+     inkscape:cx="373.83668"
+     inkscape:cy="526.1174"
+     inkscape:window-width="2560"
+     inkscape:window-height="1351"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg21" />
+  <title
+     id="title">SDC — What is this? cover</title>
+  <desc
+     id="desc">Dark banner with the title and a four-level SDC containment tree from MDS down to a Metric, plus feature labels.</desc>
+  <defs
+     id="defs4">
+    <marker
+       style="overflow:visible"
+       id="SemiCircleFilled"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Filled semicircle"
+       markerWidth="0.5"
+       markerHeight="0.5"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid"
+       markerUnits="userSpaceOnUse">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.6pt"
+         d="m -0.22470421,-0.02741555 c 0,1.656 1.344,3 3,3 v -6 c -1.656,0 -3,1.344 -3,3 z"
+         id="path25" />
+    </marker>
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect21"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <linearGradient
+       id="bg"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#0b1220"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#0f1a2b"
+         id="stop2" />
+    </linearGradient>
+    <radialGradient
+       id="leaf"
+       cx="158.8947"
+       cy="1736.9994"
+       r="80.241822"
+       gradientTransform="matrix(1.8880429,0,0,0.52964899,0,-97.499978)"
+       fx="158.8947"
+       fy="1736.9994"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#38bdf8"
+         id="stop3" />
+      <stop
+         offset="1"
+         stop-color="#0ea5e9"
+         id="stop4" />
+    </radialGradient>
+  </defs>
+  <rect
+     width="1200"
+     height="1000"
+     fill="url(#bg)"
+     id="rect4" />
+  <!-- title -->
+  <text
+     x="80"
+     y="180"
+     fill="#f1f5f9"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="118"
+     font-weight="700"
+     id="text4">SDC</text>
+  <text
+     x="84"
+     y="248"
+     fill="#38bdf8"
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="42"
+     font-weight="600"
+     id="text5">What is this? A field guide to<tspan
+   x="84"
+   dy="52"
+   id="tspan4">networked medical devices</tspan></text>
+  <!-- containment tree -->
+  <g
+     stroke="#0ea5e9"
+     stroke-width="4"
+     opacity="0.65"
+     id="g7"
+     transform="translate(646.95499,-101.50044)">
+    <line
+       x1="300"
+       y1="423.80405"
+       x2="300"
+       y2="498.80405"
+       id="line5" />
+    <line
+       x1="300"
+       y1="575.03882"
+       x2="300"
+       y2="650.03882"
+       id="line6" />
+    <line
+       x1="300"
+       y1="734.7149"
+       x2="300"
+       y2="809.7149"
+       id="line7" />
+  </g>
+  <g
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="34px"
+     font-weight="700"
+     text-anchor="middle"
+     id="g10"
+     transform="matrix(1.3427054,0,0,0.99907442,535.75856,-100.94741)">
+    <g
+       fill="#e0f2fe"
+       id="g9"
+       style="display:inline">
+      <rect
+         x="150.22736"
+         y="331.72736"
+         width="299.54529"
+         height="108.90628"
+         fill="#10263a"
+         stroke="#0ea5e9"
+         stroke-width="3.45471"
+         id="rect7"
+         style="stroke-width:3.45445;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+         sodipodi:type="rect"
+         ry="21.664051"
+         rx="16.119694" />
+      <rect
+         x="150.22736"
+         y="481.72736"
+         width="299.54529"
+         height="108.90628"
+         rx="16.119694"
+         fill="#10263a"
+         stroke="#0ea5e9"
+         stroke-width="3.45471"
+         id="rect7-9"
+         style="fill-rule:nonzero"
+         ry="21.664051" />
+      <rect
+         x="150.22736"
+         y="631.72736"
+         width="299.54529"
+         height="108.90628"
+         rx="16.119694"
+         fill="#10263a"
+         stroke="#0ea5e9"
+         stroke-width="3.45471"
+         id="rect7-9-8"
+         ry="21.664051" />
+    </g>
+    <rect
+       x="150"
+       y="781.5"
+       width="300"
+       height="82"
+       fill="url(#leaf)"
+       stroke="#0ea5e9"
+       stroke-width="3"
+       id="rect10"
+       style="fill:url(#leaf)"
+       rx="16.119694"
+       ry="21.664051" />
+    <text
+       x="300"
+       y="837.58917"
+       fill="#042539"
+       id="text10"
+       style="font-size:48px;fill:#ffffff;fill-opacity:1">SDC</text>
+  </g>
+  <!-- annotations -->
+  <!-- feature pills -->
+  <g
+     font-family="Arial, Helvetica, sans-serif"
+     font-size="36px"
+     font-weight="700"
+     id="g19"
+     transform="translate(-603.70697,-88.261253)">
+    <g
+       fill="#062033"
+       stroke="#0ea5e9"
+       stroke-width="2"
+       id="g16">
+      <rect
+         x="760"
+         y="470"
+         width="360"
+         height="96"
+         rx="22"
+         id="rect14" />
+      <rect
+         x="760"
+         y="600"
+         width="360"
+         height="96"
+         rx="22"
+         id="rect15" />
+      <rect
+         x="760"
+         y="730"
+         width="360"
+         height="96"
+         rx="22"
+         id="rect16" />
+    </g>
+    <g
+       fill="#cfeeff"
+       text-anchor="middle"
+       id="g18">
+      <text
+         x="940"
+         y="530"
+         id="text16">BICEPS model</text>
+      <text
+         x="940"
+         y="660"
+         id="text17">MDPWS transport</text>
+      <text
+         x="940"
+         y="790"
+         id="text18">WS-Discovery</text>
+    </g>
+  </g>
+  <!-- terminal dots -->
+  <g
+     fill="#0ea5e9"
+     id="g21">
+    <circle
+       cx="94"
+       cy="60"
+       r="9"
+       id="circle19" />
+    <circle
+       cx="126"
+       cy="60"
+       r="9"
+       id="circle20" />
+    <circle
+       cx="158"
+       cy="60"
+       r="9"
+       id="circle21" />
+  </g>
+  <g
+     fill="#00ff87"
+     id="g13"
+     transform="matrix(1.2681415,0,0,1.2681415,-85.685848,103.7014)"
+     style="fill:#3abff8;fill-opacity:1">
+    <circle
+       cx="120"
+       cy="620"
+       r="8"
+       id="circle10"
+       style="fill:#3abff8;fill-opacity:1" />
+    <circle
+       cx="150"
+       cy="620"
+       r="8"
+       id="circle11"
+       style="fill:#3abff8;fill-opacity:1" />
+    <circle
+       cx="180"
+       cy="620"
+       r="8"
+       id="circle12"
+       style="fill:#3abff8;fill-opacity:1" />
+    <rect
+       x="230"
+       y="612"
+       width="520"
+       height="16"
+       rx="8"
+       id="rect12"
+       style="fill:#3abff8;fill-opacity:1" />
+    <rect
+       x="230"
+       y="648"
+       width="660"
+       height="16"
+       rx="8"
+       opacity="0.7"
+       id="rect13"
+       style="fill:#3abff8;fill-opacity:1" />
+  </g>
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21"
+     cx="973.41693"
+     cy="259.80176"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-5"
+     cx="973.41693"
+     cy="309.80176"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-2"
+     cx="953.41693"
+     cy="284.80176"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-2-1"
+     cx="993.41693"
+     cy="284.80176"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-21"
+     cx="1098.5061"
+     cy="561.74084"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-5-6"
+     cx="1098.5061"
+     cy="611.74084"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-2-8"
+     cx="1078.5061"
+     cy="586.74084"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-2-1-57"
+     cx="1118.5061"
+     cy="586.74084"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-5-7"
+     cx="1093.2406"
+     cy="467.29816"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-2-1-6"
+     cx="1113.2406"
+     cy="442.29816"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-2-1-1"
+     cx="1061.8998"
+     cy="259.80176"
+     r="7.8012662" />
+  <circle
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="path21-2-1-5"
+     cx="1091.8998"
+     cy="259.80176"
+     r="7.8012662" />
+  <rect
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="rect21"
+     width="172.56401"
+     height="68.651146"
+     x="755.1626"
+     y="249.01642"
+     rx="10" />
+  <rect
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="rect22"
+     width="141.04689"
+     height="80.509071"
+     x="928.97479"
+     y="395.05612"
+     rx="10" />
+  <path
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal;marker-start:url(#SemiCircleFilled)"
+     d="M 760,470.57239 H 904.1674"
+     id="path22" />
+  <path
+     style="fill:#3abff8;fill-opacity:1;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal;marker-start:url(#SemiCircleFilled)"
+     d="M 760,462.0005 H 904.1674"
+     id="path22-4" />
+  <rect
+     style="fill:#3abff8;fill-opacity:0.19899245;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     id="rect23"
+     width="286.15045"
+     height="78.012665"
+     x="759.84332"
+     y="544.52838"
+     rx="10" />
+  <path
+     style="fill:none;fill-opacity:0.198992;fill-rule:nonzero;stroke:#16a8fb;stroke-width:4.001;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+     d="m 759.84334,579.47806 h 8.73742 l 5.30486,-26.21225 5.92896,58.97757 4.05666,-39.00633 3.74461,14.04228 3.43256,-8.11332 h 46.18349 l 7.17717,-26.83635 6.55306,58.35347 8.11332,-40.56659 3.43256,17.47484 4.99281,-10.29767 h 53.36066 l 7.48921,-24.33995 9.04947,55.54502 5.30486,-39.31839 3.12051,17.47484 3.43256,-9.98562 h 52.73651 l 6.8651,-24.652 7.1772,57.72937 7.8013,-41.19069 3.1205,23.09175 5.3408,-14.97539 12.7581,-0.003"
+     id="path23"
+     sodipodi:nodetypes="cccccccccccccccccccccccccc" />
+</svg>
